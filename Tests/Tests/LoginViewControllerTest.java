@@ -2,12 +2,14 @@ package Tests;
 
 import BE.User;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class LoginViewControllerTest {
 
+    @DisplayName("Checks if a User is an admin")
     @Test
     void userIsAdmin() {
         // Triple A - Pattern
@@ -23,6 +25,7 @@ class LoginViewControllerTest {
 
     }
 
+    @DisplayName("Checks if a User isn't an admin")
     @Test
     void userIsNotAdmin() {
         // Triple A - Pattern
