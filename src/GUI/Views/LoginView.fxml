@@ -5,44 +5,57 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<BorderPane maxHeight="1080.0" maxWidth="1920.0" minHeight="235.0" minWidth="300.0" prefHeight="720.0" prefWidth="1270.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controllers.LoginViewController">
+<BorderPane maxHeight="1080.0" maxWidth="1920.0" minHeight="235.0" minWidth="300.0" prefHeight="720.0" prefWidth="1270.0" styleClass="borderpane" stylesheets="@../../Resources/CSS/MainTheme.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controllers.LoginViewController">
    <center>
-      <VBox fillWidth="false" maxHeight="235.0" maxWidth="300.0" minHeight="235.0" minWidth="300.0" prefHeight="235.0" prefWidth="300.0" BorderPane.alignment="CENTER">
+      <VBox fillWidth="false" maxHeight="600.0" maxWidth="300.0" minHeight="400.0" minWidth="300.0" prefHeight="400.0" prefWidth="300.0" BorderPane.alignment="CENTER">
          <children>
+            <ImageView fitHeight="200.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Resources/Images/ArlaLogo500x335.png" />
+               </image>
+               <VBox.margin>
+                  <Insets bottom="50.0" />
+               </VBox.margin>
+            </ImageView>
             <Label alignment="CENTER" text="Login:">
                <font>
-                  <Font size="26.0" />
+                  <Font name="Calibri Bold" size="26.0" />
                </font>
             </Label>
-            <TextField fx:id="loginField" maxHeight="40.0" maxWidth="300.0" minHeight="40.0" minWidth="300.0" prefHeight="40.0" prefWidth="300.0">
+            <TextField id="text-field-style" fx:id="loginField" maxHeight="40.0" maxWidth="300.0" minHeight="40.0" minWidth="300.0" prefHeight="40.0" prefWidth="300.0" promptText="👤 Username">
                <VBox.margin>
                   <Insets bottom="5.0" top="5.0" />
                </VBox.margin>
                <font>
                   <Font size="18.0" />
                </font>
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
             </TextField>
-            <Label alignment="CENTER" layoutX="10.0" layoutY="10.0" text="Password:">
-               <font>
-                  <Font size="26.0" />
-               </font>
-            </Label>
-            <PasswordField fx:id="passwordField" maxHeight="40.0" maxWidth="300.0" minHeight="40.0" minWidth="300.0" prefHeight="40.0" prefWidth="300.0">
+            <PasswordField id="text-field-style" fx:id="passwordField" maxHeight="40.0" maxWidth="300.0" minHeight="40.0" minWidth="300.0" prefHeight="40.0" prefWidth="300.0" promptText="🔑 Password">
                <font>
                   <Font size="18.0" />
                </font>
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
             </PasswordField>
-            <Button fx:id="loginButton" alignment="CENTER" mnemonicParsing="false" onAction="#handleLoginButton" text="Login">
+            <Button id="button-style" fx:id="loginButton" alignment="CENTER" mnemonicParsing="false" onAction="#handleLoginButton" text="Login">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>
                <font>
-                  <Font size="24.0" />
+                  <Font name="Calibri Bold" size="24.0" />
                </font>
             </Button>
          </children>

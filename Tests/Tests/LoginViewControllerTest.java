@@ -30,7 +30,7 @@ class LoginViewControllerTest {
     void userIsNotAdmin() {
         // Triple A - Pattern
         // Arrange - Setup test objects etc.
-        User user = new User(0,"Børge Bobsen",false);
+        User user = new User(0,"Jakob Hansen",false);
 
         // Act - do the actual calculations or method runs.
         boolean actualValue = user.isAdmin();
