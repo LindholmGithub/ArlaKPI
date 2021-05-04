@@ -39,6 +39,13 @@ public class UserDAO {
     }
 
     public void addUser(String fullName, String loginName, String password, boolean isAdmin) {
-        // Mangler implementering
+        // Mangler implementering.
+    }
+    public void deleteUser(User selectedUser) throws SQLException {
+        if (selectedUser.isAdmin()){
+            System.out.println("Admin");
+        } else {
+            System.out.println("Ikke Admin");
+        }
     }
 }

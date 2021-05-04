@@ -10,14 +10,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-
 import java.io.File;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -42,24 +41,27 @@ public class LoginViewController implements Initializable {
         String writtenLogin = loginField.getText();
         String writtenPassword = passwordField.getText();
         selectedUser = loginModel.getUserFromLogin(writtenLogin,writtenPassword);
-        if(selectedUser != null && selectedUser.isAdmin()){
-            URL adminUrl = new File("src/GUI/Views/AdminMainView.fxml").toURI().toURL();
-            Parent root = FXMLLoader.load(adminUrl);
-            Scene adminViewScene = new Scene(root,1270,720);
-            thisStage.setScene(adminViewScene);
-            thisStage.hide();
-            thisStage.show();
-        }
-        else if (selectedUser != null && !selectedUser.isAdmin()) {
-            URL userUrl = new File("src/GUI/Views/UserMainView.fxml").toURI().toURL();
-            Parent root = FXMLLoader.load(userUrl);
-            Scene adminViewScene = new Scene(root,1270,720);
-            thisStage.setScene(adminViewScene);
-            thisStage.hide();
-            thisStage.show();
-        }
-        else {
-            System.out.println("Failure!");
+        try {
+            if(selectedUser != null && selectedUser.isAdmin()){
+                URL adminUrl = new File("src/GUI/Views/AdminMainView.fxml").toURI().toURL();
+                Parent root = FXMLLoader.load(adminUrl);
+                Scene adminViewScene = new Scene(root,1270,720);
+                thisStage.setScene(adminViewScene);
+                thisStage.hide();
+                thisStage.show();
+            }
+            else if (selectedUser != null && !selectedUser.isAdmin()) {
+                URL userUrl = new File("src/GUI/Views/UserMainView.fxml").toURI().toURL();
+                Parent root = FXMLLoader.load(userUrl);
+                Scene adminViewScene = new Scene(root,1270,720);
+                thisStage.setScene(adminViewScene);
+                thisStage.hide();
+                thisStage.show();
+            }
+        } catch (IOException ioException){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Wrong login, please try again!");
+            alert.showAndWait();
         }
     }
 
