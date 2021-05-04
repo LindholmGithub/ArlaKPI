@@ -76,4 +76,12 @@ public class UserDAO {
             connectionPool.checkIn(con);
         }
     }
+
+    public void deleteUser(User selectedUser) throws SQLException {
+        if (selectedUser.isAdmin()){
+            System.out.println("Admin");
+        } else {
+            System.out.println("Ikke Admin");
+        }
+    }
 }
