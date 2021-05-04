@@ -54,7 +54,7 @@ public class UserDAO {
                 addLogin(id,loginName,password);
             }
 
-        } catch (SQLException | IOException exception) {
+        } catch (SQLException exception) {
             exception.printStackTrace();
         } finally {
             connectionPool.checkIn(con);
