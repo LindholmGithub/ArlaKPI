@@ -11,15 +11,21 @@ public class UserManager {
     private List<User> allUsers;
     private List<User> usersList;
     private List<User> adminsList;
+    private UserDAO userDAO;
     public UserManager() throws IOException {
         this.fillLists();
+        userDAO = new UserDAO();
+    }
+
+    public void addUser(String fullName,String loginName,String password,boolean isAdmin){
+        userDAO.addUser(fullName,loginName,password,isAdmin);
     }
 
     public void fillLists() throws IOException {
-        UserDAO uDAO = new UserDAO();
+
         usersList = new ArrayList<>();
         adminsList = new ArrayList<>();
-        allUsers = uDAO.getAllUsers();
+        allUsers = userDAO.getAllUsers();
         for (User u: allUsers) {
             if(u.isAdmin()){
                 adminsList.add(u);

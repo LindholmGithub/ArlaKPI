@@ -6,13 +6,21 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
+import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -45,7 +53,21 @@ public class AdminMainViewController implements Initializable {
         }
     }
 
-    public void handleCreateButton(ActionEvent actionEvent) {
+    public void handleCreateButton(ActionEvent actionEvent) throws IOException {
+        try {
+            URL urlMoreInfo = new File("src/GUI/Views/CreateNewUserView.fxml").toURI().toURL();
+            Parent root = FXMLLoader.load(urlMoreInfo);
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.initStyle(StageStyle.UNDECORATED);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e){
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setContentText("An error has occured, please try again!");
+            alert.showAndWait();
+        }
     }
 
     public void handleDeleteButton(ActionEvent actionEvent) {
@@ -59,8 +81,7 @@ public class AdminMainViewController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        usersObservableList = userModel.getUsersList();
-        adminsObservableList = userModel.getUsersList();
-        adminsList.setItems(adminsObservableList);
+        adminsList.setItems(userModel.getAdminsList());
+        usersList.setItems(userModel.getUsersList());
     }
 }

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane id="createUserPane" prefHeight="500.0" prefWidth="500.0" stylesheets="@../../Resources/CSS/MainTheme.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controllers.CreateNewUserViewController">
+   <center>
+      <VBox alignment="CENTER_LEFT" BorderPane.alignment="CENTER">
+         <children>
+            <Label alignment="TOP_LEFT" text="Full name:">
+               <font>
+                  <Font name="Calibri Bold" size="26.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="5.0" />
+               </VBox.margin>
+            </Label>
+            <TextField id="text-field-style" fx:id="fullNameField" maxHeight="50.0" maxWidth="400.0" minHeight="50.0" minWidth="200.0" prefHeight="50.0" prefWidth="300.0">
+               <font>
+                  <Font name="Calibri" size="24.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+            </TextField>
+            <Label alignment="TOP_LEFT" layoutX="246.0" layoutY="239.0" text="Login name:">
+               <font>
+                  <Font name="Calibri Bold" size="26.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="5.0" />
+               </VBox.margin>
+            </Label>
+            <TextField id="text-field-style" fx:id="loginNameField" layoutX="10.0" layoutY="256.0" maxHeight="50.0" maxWidth="400.0" minHeight="50.0" minWidth="200.0" prefHeight="50.0" prefWidth="300.0">
+               <font>
+                  <Font name="Calibri" size="24.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+            </TextField>
+            <HBox>
+               <children>
+                  <VBox>
+                     <children>
+                        <Label alignment="TOP_LEFT" text="Password:">
+                           <font>
+                              <Font name="Calibri Bold" size="26.0" />
+                           </font>
+                        </Label>
+                        <PasswordField id="text-field-style" fx:id="passwordField" maxHeight="50.0" maxWidth="400.0" minHeight="50.0" minWidth="250.0" prefHeight="50.0" prefWidth="330.0">
+                           <font>
+                              <Font name="Calibri" size="24.0" />
+                           </font>
+                           <padding>
+                              <Insets left="20.0" />
+                           </padding>
+                        </PasswordField>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0">
+                     <children>
+                        <Label alignment="TOP_LEFT" text="Show/Hide Password" textAlignment="CENTER" wrapText="true">
+                           <font>
+                              <Font name="Calibri" size="14.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <CheckBox fx:id="showHidePassword" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleShowHidePassword">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </CheckBox>
+                     </children>
+                     <HBox.margin>
+                        <Insets right="30.0" />
+                     </HBox.margin>
+                  </VBox>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="30.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox>
+               <children>
+                  <Label alignment="TOP_LEFT" text="Admin user:">
+                     <font>
+                        <Font name="Calibri Bold" size="26.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="50.0" />
+                     </HBox.margin>
+                  </Label>
+                  <CheckBox fx:id="adminCheckBox" mnemonicParsing="false">
+                     <font>
+                        <Font name="Calibri Bold" size="24.0" />
+                     </font>
+                  </CheckBox>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="50.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="TOP_RIGHT" layoutX="10.0" layoutY="392.0">
+               <children>
+                  <Button id="button-style" fx:id="createUserButton" defaultButton="true" mnemonicParsing="false" onAction="#handleCreateUserButton" text="Create">
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Calibri Bold" size="18.0" />
+                     </font>
+                  </Button>
+                  <Button id="button-style" fx:id="cancelCreateUserButton" cancelButton="true" mnemonicParsing="false" onAction="#handleCancelCreateUserButton" text="Cancel">
+                     <font>
+                        <Font name="Calibri Bold" size="18.0" />
+                     </font>
+                  </Button>
+               </children>
+               <VBox.margin>
+                  <Insets right="50.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+         <BorderPane.margin>
+            <Insets left="50.0" />
+         </BorderPane.margin>
+      </VBox>
+   </center>
+</BorderPane>

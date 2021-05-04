@@ -24,7 +24,7 @@
                         <Insets bottom="5.0" top="5.0" />
                      </VBox.margin>
                   </Label>
-                  <ListView id="text-field-style" fx:id="usersList" maxWidth="300.0" minHeight="400.0" minWidth="300.0" prefHeight="880.0" prefWidth="300.0" />
+                  <ListView fx:id="usersList" maxWidth="300.0" minHeight="400.0" minWidth="300.0" prefHeight="880.0" prefWidth="300.0" />
                </children>
                <HBox.margin>
                   <Insets bottom="15.0" right="10.0" />
@@ -40,7 +40,7 @@
                         <Insets bottom="5.0" top="5.0" />
                      </VBox.margin>
                   </Label>
-                  <ListView id="text-field-style" fx:id="adminsList" maxWidth="300.0" minHeight="400.0" minWidth="300.0" prefHeight="880.0" prefWidth="300.0" />
+                  <ListView fx:id="adminsList" maxWidth="300.0" minHeight="400.0" minWidth="300.0" prefHeight="880.0" prefWidth="300.0" />
                </children>
                <HBox.margin>
                   <Insets bottom="15.0" />

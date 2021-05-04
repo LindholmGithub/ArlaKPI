@@ -6,12 +6,12 @@ import javafx.beans.property.StringProperty;
 public class User {
 
     private final int id;
-    private StringProperty fullName;
+    private String fullName;
     private boolean isAdmin;
 
     public User(int id, String fullName, Boolean isAdmin){
         this.id = id;
-        this.fullName = new SimpleStringProperty(fullName);
+        this.fullName = fullName;
         this.isAdmin = isAdmin;
     }
 
@@ -20,13 +20,11 @@ public class User {
     }
 
     public String getFullName() {
-        return fullName.get();
+        return fullName;
     }
 
-    public StringProperty fullNameProperty() { return fullName;}
-
     public void setFullName(String fullName) {
-        this.fullName.set(fullName);
+        this.fullName = fullName;
     }
 
     public boolean isAdmin() {
@@ -37,4 +35,8 @@ public class User {
         isAdmin = admin;
     }
 
+    @Override
+    public String toString() {
+        return fullName;
+    }
 }

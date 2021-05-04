@@ -4,10 +4,7 @@ import BE.User;
 import DAL.DBConnection.JDBCConnectionPool;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,4 +38,7 @@ public class UserDAO {
         return allUsers;
     }
 
+    public void addUser(String fullName, String loginName, String password, boolean isAdmin) {
+        // Todo - Mangler implementering
+    }
 }

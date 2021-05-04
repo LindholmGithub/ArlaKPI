@@ -2,9 +2,11 @@ package GUI.Controllers;
 
 import BE.User;
 import GUI.Models.LoginModel;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -18,8 +20,9 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.ResourceBundle;
 
-public class LoginViewController {
+public class LoginViewController implements Initializable {
     @FXML
     private Button loginButton;
     @FXML
@@ -58,5 +61,15 @@ public class LoginViewController {
         else {
             System.out.println("Failure!");
         }
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                loginButton.requestFocus();
+            }
+        });
     }
 }

@@ -27,4 +27,7 @@ public class UserModel {
         adminsList.addAll(userManager.getAdminsList());
         return adminsList;
     }
+    public void addUser(String fullName,String loginName,String password,boolean isAdmin){
+        userManager.addUser(fullName, loginName, password, isAdmin);
+    }
 }

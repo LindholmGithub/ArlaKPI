@@ -4,13 +4,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("GUI/Views/LoginView.fxml"));
-        primaryStage.setTitle("Hello World");
+        primaryStage.setTitle("Arla KPI");
         Scene scene = new Scene(root,1270,720);
         primaryStage.setScene(scene);
         primaryStage.show();
