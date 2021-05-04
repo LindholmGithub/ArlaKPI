@@ -4,6 +4,7 @@ import BE.User;
 import DAL.DAO.UserDAO;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,5 +42,9 @@ public class UserManager {
 
     public List<User> getAdminsList() {
         return adminsList;
+    }
+
+    public void deleteUser(User selectedUser) throws SQLException {
+        userDAO.deleteUser(selectedUser);
     }
 }

@@ -6,6 +6,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 public class UserModel {
@@ -29,5 +30,9 @@ public class UserModel {
     }
     public void addUser(String fullName,String loginName,String password,boolean isAdmin){
         userManager.addUser(fullName, loginName, password, isAdmin);
+    }
+
+    public void deleteUser(User selectedUser) throws SQLException {
+        userManager.deleteUser(selectedUser);
     }
 }
