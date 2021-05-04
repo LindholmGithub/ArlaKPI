@@ -1,14 +1,17 @@
 package BE;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 public class User {
 
     private final int id;
-    private String fullName;
+    private StringProperty fullName;
     private boolean isAdmin;
 
     public User(int id, String fullName, Boolean isAdmin){
         this.id = id;
-        this.fullName = fullName;
+        this.fullName = new SimpleStringProperty(fullName);
         this.isAdmin = isAdmin;
     }
 
@@ -17,11 +20,13 @@ public class User {
     }
 
     public String getFullName() {
-        return fullName;
+        return fullName.get();
     }
 
+    public StringProperty fullNameProperty() { return fullName;}
+
     public void setFullName(String fullName) {
-        this.fullName = fullName;
+        this.fullName.set(fullName);
     }
 
     public boolean isAdmin() {
