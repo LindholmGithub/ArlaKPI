@@ -78,10 +78,27 @@ public class UserDAO {
     }
 
     public void deleteUser(User selectedUser) throws SQLException {
-        if (selectedUser.isAdmin()){
-            System.out.println("Admin");
-        } else {
-            System.out.println("Ikke Admin");
+            String adminsql = "DELETE FROM Account Where UserID =" + selectedUser.getId() + ";";
+            Connection con = connectionPool.checkOut();
+            try (PreparedStatement st = con.prepareStatement(adminsql,Statement.RETURN_GENERATED_KEYS)){
+                deleteUserLogin(selectedUser);
+                st.executeUpdate();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } finally {
+                connectionPool.checkIn(con);
+            }
+    }
+
+    public void deleteUserLogin(User selectedUser){
+        String adminsql = "DELETE FROM UserLogin Where UsID =" + selectedUser.getId() + ";";
+        Connection con = connectionPool.checkOut();
+        try (PreparedStatement st = con.prepareStatement(adminsql,Statement.RETURN_GENERATED_KEYS)){
+            st.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            connectionPool.checkIn(con);
         }
     }
 }
