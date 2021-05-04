@@ -12,17 +12,13 @@ public class UserManager {
     private List<User> usersList;
     private List<User> adminsList;
     private UserDAO userDAO;
-    public UserManager() throws IOException {
-        this.fillLists();
-        userDAO = new UserDAO();
-    }
 
-    public void addUser(String fullName,String loginName,String password,boolean isAdmin){
-        userDAO.addUser(fullName,loginName,password,isAdmin);
+    public UserManager() throws IOException {
+        this.userDAO = new UserDAO();
+        this.fillLists();
     }
 
     public void fillLists() throws IOException {
-
         usersList = new ArrayList<>();
         adminsList = new ArrayList<>();
         allUsers = userDAO.getAllUsers();
@@ -34,6 +30,9 @@ public class UserManager {
                 usersList.add(u);
             }
         }
+    }
+    public void addUser(String fullName,String loginName,String password,boolean isAdmin){
+        userDAO.addUser(fullName,loginName,password,isAdmin);
     }
 
     public List<User> getUsersList() {

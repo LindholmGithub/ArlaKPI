@@ -39,6 +39,6 @@ public class UserDAO {
     }
 
     public void addUser(String fullName, String loginName, String password, boolean isAdmin) {
-        // Todo - Mangler implementering
+        // Mangler implementering
     }
 }

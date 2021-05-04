@@ -3,6 +3,7 @@ import javafx.beans.binding.DoubleBinding;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -12,6 +13,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("GUI/Views/LoginView.fxml"));
         primaryStage.setTitle("Arla KPI");
+        primaryStage.getIcons().add(new Image("Resources/Images/ArlaLogo100x100.png"));
         Scene scene = new Scene(root,1270,720);
         primaryStage.setScene(scene);
         primaryStage.show();
