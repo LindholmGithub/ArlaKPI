@@ -47,4 +47,9 @@ public class UserManager {
     public void deleteUser(User selectedUser) throws SQLException {
         userDAO.deleteUser(selectedUser);
     }
+    public void emptyLists() {
+        allUsers.clear();
+        adminsList.clear();
+        usersList.clear();
+    }
 }

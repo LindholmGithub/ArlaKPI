@@ -44,7 +44,7 @@ public class CreateNewUserViewController implements Initializable {
         tooltip = new Tooltip();
     }
 
-    public void handleCreateUserButton(ActionEvent actionEvent) {
+    public void handleCreateUserButton(ActionEvent actionEvent) throws IOException {
         typedFullName = fullNameField.getText();
         typedLoginName = loginNameField.getText();
         typedPassword = passwordField.getText();

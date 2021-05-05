@@ -2,6 +2,8 @@ package GUI.Controllers;
 
 import BE.User;
 import GUI.Models.UserModel;
+import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -39,14 +41,15 @@ public class AdminMainViewController implements Initializable {
 
     private User selectedUser;
     private User selectedAdmin;
-    private ObservableList<User> usersObservableList;
-    private ObservableList<User> adminsObservableList;
+    public static ObservableList<User> usersObservableList;
+    public static ObservableList<User> adminsObservableList;
     private UserModel userModel;
 
     public AdminMainViewController() throws IOException {
         try {
             userModel = new UserModel();
-            usersList = new ListView();
+            usersObservableList = FXCollections.observableArrayList();
+            adminsObservableList = FXCollections.observableArrayList();
         } catch (IOException e){
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setContentText("An error occurred, please try again!");
@@ -85,7 +88,7 @@ public class AdminMainViewController implements Initializable {
                 alert.setContentText("Please select a user first!");
                 alert.showAndWait();
             }
-        } catch (SQLException sqlException) {
+        } catch (SQLException | IOException sqlException) {
             sqlException.printStackTrace();
         }
     }
@@ -100,6 +103,18 @@ public class AdminMainViewController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         adminsList.setItems(userModel.getAdminsList());
         usersList.setItems(userModel.getUsersList());
+        usersObservableList.addListener(new ListChangeListener<User>() {
+            @Override
+            public void onChanged(Change<? extends User> change) {
+                usersList.setItems(usersObservableList);
+            }
+        });
+        adminsObservableList.addListener(new ListChangeListener<User>() {
+            @Override
+            public void onChanged(Change<? extends User> change) {
+                adminsList.setItems(adminsObservableList);
+            }
+        });
     }
 
     public void handleAdminFocus(MouseEvent mouseEvent) {
@@ -108,5 +123,9 @@ public class AdminMainViewController implements Initializable {
 
     public void handleUserFocus(MouseEvent mouseEvent) {
         adminsList.getSelectionModel().clearSelection();
+    }
+    public static void emptyStaticLists() {
+        usersObservableList.clear();
+        adminsObservableList.clear();
     }
 }
