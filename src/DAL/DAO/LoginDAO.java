@@ -25,6 +25,14 @@ public class LoginDAO {
         this.connectionPool = connectionPool;
     }
 
+    /**
+     * This method returns a User-object from two given Strings, essentially a Username and a Password.
+     * @param login
+     * @param password
+     * @return
+     * @throws SQLException
+     */
+
     public User getUserFromLogin(String login, String password) throws SQLException {
         Connection connection = connectionPool.checkOut();
         String sql = "Select * from Account INNER JOIN UserLogin ON Account.UserID = Userlogin.UsID WHERE UserLogin.LoginName = ? AND UserLogin.LoginPassword = ?";
