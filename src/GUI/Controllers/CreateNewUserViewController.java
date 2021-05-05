@@ -51,7 +51,14 @@ public class CreateNewUserViewController implements Initializable {
         isAdmin = adminCheckBox.isSelected();
         if (typedFullName != null && typedLoginName != null && typedPassword != null) {
             userModel.addUser(typedFullName, typedLoginName, typedPassword, isAdmin);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("User " + typedFullName + " has been created!");
+            alert.showAndWait();
+            Stage stage = (Stage) createUserButton.getScene().getWindow();
+            stage.close();
         }
+
+
     }
 
     public void handleCancelCreateUserButton(ActionEvent actionEvent) {
