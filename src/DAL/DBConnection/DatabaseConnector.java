@@ -10,7 +10,7 @@ import java.util.Properties;
 public class DatabaseConnector {
 
 
-    private static final String PROP_FILE = "src/AttendanceChecker/DAL/DBConnection/database.settings";;
+    private static final String PROP_FILE = "src/DAL/DBConnection/database.settings";;
     private SQLServerDataSource ds;
 
     /**

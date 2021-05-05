@@ -3,6 +3,7 @@ package DAL.DAO;
 import BE.User;
 import DAL.DBConnection.JDBCConnectionPool;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,11 +19,10 @@ public class LoginDAO {
     private final JDBCConnectionPool connectionPool;
 
     /**
-     * Constuctor for the JDBCConnectionPool.
-     * @param connectionPool
+     * Constructor for the JDBCConnectionPool.
      */
-    public LoginDAO(JDBCConnectionPool connectionPool) {
-        this.connectionPool = connectionPool;
+    public LoginDAO() throws IOException {
+        connectionPool = JDBCConnectionPool.getInstance();
     }
 
     /**

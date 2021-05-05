@@ -1,5 +1,8 @@
 package BE;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 public class User {
 
     private final int id;
@@ -56,5 +59,10 @@ public class User {
      */
     public void setAdmin(boolean admin) {
         isAdmin = admin;
+    }
+
+    @Override
+    public String toString() {
+        return fullName;
     }
 }

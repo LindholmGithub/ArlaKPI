@@ -1,0 +1,54 @@
+.borderpane {
+    -fx-background-image: url('/Resources/Images/Wallpaper1920x1080.png') no-repeat center center fixed;
+}
+
+.root {
+}
+
+#button-style {
+    -fx-background-color:
+            #000000,
+            linear-gradient(#7ebcea, #2f4b8f),
+            linear-gradient(#426ab7, #263e75),
+            linear-gradient(#395cab, #223768);
+    -fx-background-insets: 0,1,2,3;
+    -fx-background-radius: 3,2,2,2;
+    -fx-padding: 12 30 12 30;
+    -fx-text-fill: white;
+}
+#button-style Text {
+    -fx-effect: dropshadow(one-pass-box, rgba(0, 0, 0, 0.8), 0, 0.0, 0, 1);
+}
+#button-style:hover {
+    -fx-background-color:
+            #000000,
+            linear-gradient(#98D6FF, #4965A9),
+            linear-gradient(#5C84D1, #40588F),
+            linear-gradient(#5376C5, #3C5182);
+    -fx-background-insets: 0,1,2,3;
+    -fx-background-radius: 3,2,2,2;
+    -fx-padding: 12 30 12 30;
+}
+#button-style:pressed {
+    -fx-background-color:
+            #000000,
+            linear-gradient(#65A3D1, #163276),
+            linear-gradient(#29519E, #0D255C),
+            linear-gradient(#204392, #091E4F);
+    -fx-padding: 12 30 12 30;
+    -fx-background-insets: 0,1,2,3;
+    -fx-background-radius: 3,2,2,2;
+}
+
+#text-field-style {
+    -fx-background-radius: 30px,30px,30px,30px;
+}
+
+.list-cell {
+    -fx-font-size: 2em ;
+    -fx-font-family: Calibri;
+}
+#createUserPane {
+    -fx-border-color: #000;
+    -fx-border-style: solid;
+}

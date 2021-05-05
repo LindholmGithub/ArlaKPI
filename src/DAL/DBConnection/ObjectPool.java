@@ -59,7 +59,7 @@ public abstract class ObjectPool<T>
                 t = e.nextElement(); //Get the next resource available
                 if ((now - unlocked.get(t)) > expirationTime) //If the resource has expired:
                 {
-                    //Object has expired. We remove any reference to it and run the expiration rutine.
+                    //Object has expired. We remove any reference to it and run the expiration routine.
                     unlocked.remove(t);
                     expire(t);
                     t = null;
