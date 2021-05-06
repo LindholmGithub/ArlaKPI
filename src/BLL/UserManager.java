@@ -53,7 +53,7 @@ public class UserManager {
         usersList.clear();
     }
 
-    public void editUser(String fullName, String loginName, String password) {
-        userDAO.editUser(fullName,loginName,password);
+    public void editUser(User selectedUser,String fullName, String loginName, String password) {
+        userDAO.editUser(selectedUser,fullName,loginName,password);
     }
 }

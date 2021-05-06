@@ -50,7 +50,7 @@ public class  EditUserInfoViewController implements Initializable {
         typedLoginName = loginNameField.getText();
         typedPassword = passwordField.getText();
         if (typedFullName != null && typedLoginName != null && typedPassword != null){
-            userModel.editUser(typedFullName,typedLoginName,typedPassword);
+            userModel.editUser(selectedUser,typedFullName,typedLoginName,typedPassword);
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setContentText("User " + typedFullName + " has been edited!");
             alert.showAndWait();
