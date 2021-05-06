@@ -103,9 +103,29 @@ public class UserDAO {
     }
 
     public void editUser(User user,String fullName, String loginName, String password) {
-        // Implementering her.
+        String userSQL = "UPDATE Account SET FullName = ? WHERE UserID = " + user.getId() + ";";
+        Connection con = connectionPool.checkOut();
+        try (PreparedStatement st = con.prepareStatement(userSQL,Statement.RETURN_GENERATED_KEYS)){
+            st.setString(1,fullName);
+            editLogin(user.getId(),loginName,password);
+            st.executeUpdate();
+        } catch (SQLException exception) {
+            exception.printStackTrace();
+        } finally {
+            connectionPool.checkIn(con);
+        }
     }
     public void editLogin(int id, String loginName, String password){
-        // Implementering her.
+        String loginSQL = "UPDATE UserLogin SET LoginName = ?, LoginPassword = ? WHERE UsID = " + id + ";";
+        Connection con = connectionPool.checkOut();
+        try(PreparedStatement st = con.prepareStatement(loginSQL,Statement.RETURN_GENERATED_KEYS)){
+            st.setString(1,loginName);
+            st.setString(2,password);
+            st.executeUpdate();
+        } catch (SQLException exception) {
+            exception.printStackTrace();
+        } finally {
+            connectionPool.checkIn(con);
+        }
     }
 }
