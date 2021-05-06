@@ -101,4 +101,11 @@ public class UserDAO {
             connectionPool.checkIn(con);
         }
     }
+
+    public void editUser(String fullName, String loginName, String password) {
+        // Implementering her.
+    }
+    public void editLogin(int id, String loginName, String password){
+        // Implementering her.
+    }
 }

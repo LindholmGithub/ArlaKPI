@@ -52,4 +52,8 @@ public class UserManager {
         adminsList.clear();
         usersList.clear();
     }
+
+    public void editUser(String fullName, String loginName, String password) {
+        userDAO.editUser(fullName,loginName,password);
+    }
 }

@@ -39,8 +39,8 @@ public class AdminMainViewController implements Initializable {
     @FXML
     private Button editViewButton;
 
-    private User selectedUser;
-    private User selectedAdmin;
+    private static User selectedUser;
+    private static User selectedAdmin;
     public static ObservableList<User> usersObservableList;
     public static ObservableList<User> adminsObservableList;
     private UserModel userModel;
@@ -78,9 +78,9 @@ public class AdminMainViewController implements Initializable {
         selectedUser = usersList.getSelectionModel().getSelectedItem();
         selectedAdmin = adminsList.getSelectionModel().getSelectedItem();
         try {
-            if (selectedUser != null && !selectedUser.isAdmin()) {
+            if (selectedUser != null) {
                 userModel.deleteUser(selectedUser);
-            } else if (selectedAdmin != null && selectedAdmin.isAdmin()){
+            } else if (selectedAdmin != null){
                 userModel.deleteUser(selectedAdmin);
             }
             else {
@@ -94,6 +94,27 @@ public class AdminMainViewController implements Initializable {
     }
 
     public void handleEditInfoButton(ActionEvent actionEvent) {
+        selectedUser = usersList.getSelectionModel().getSelectedItem();
+        selectedAdmin = adminsList.getSelectionModel().getSelectedItem();
+        try {
+            if (selectedUser != null || selectedAdmin != null) {
+                URL urlMoreInfo = new File("src/GUI/Views/EditUserInfoView.fxml").toURI().toURL();
+                Parent root = FXMLLoader.load(urlMoreInfo);
+                Scene scene = new Scene(root);
+                Stage stage = new Stage();
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.initStyle(StageStyle.UNDECORATED);
+                stage.setScene(scene);
+                stage.show();
+            }
+            else {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Please select a user first!");
+                alert.showAndWait();
+            }
+        } catch (IOException sqlException) {
+            sqlException.printStackTrace();
+        }
     }
 
     public void handleEditViewButton(ActionEvent actionEvent) {
@@ -124,8 +145,18 @@ public class AdminMainViewController implements Initializable {
     public void handleUserFocus(MouseEvent mouseEvent) {
         adminsList.getSelectionModel().clearSelection();
     }
+
     public static void emptyStaticLists() {
         usersObservableList.clear();
         adminsObservableList.clear();
+    }
+
+    public static User getSelectedUser() {
+        if (selectedUser != null){
+            return selectedUser;
+        } else if (selectedAdmin != null){
+            return selectedAdmin;
+        }
+        return null;
     }
 }
