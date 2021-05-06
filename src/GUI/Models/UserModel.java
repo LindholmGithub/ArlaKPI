@@ -19,18 +19,6 @@ public class UserModel {
 
     public UserModel() throws IOException {
         userManager = new UserManager();
-        usersList.addListener(new ListChangeListener<User>() {
-            @Override
-            public void onChanged(Change<? extends User> change) {
-
-            }
-        });
-        adminsList.addListener(new ListChangeListener<User>() {
-            @Override
-            public void onChanged(Change<? extends User> change) {
-
-            }
-        });
     }
 
     public ObservableList<User> getUsersList() {
@@ -60,8 +48,4 @@ public class UserModel {
         AdminMainViewController.usersObservableList.addAll(userManager.getUsersList());
     }
 
-    public void emptyLists(){
-        usersList.clear();
-        adminsList.clear();
-    }
 }
