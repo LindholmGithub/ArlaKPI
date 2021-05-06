@@ -45,7 +45,7 @@ public class  EditUserInfoViewController implements Initializable {
         tooltip = new Tooltip();
     }
 
-    public void handleEditUserButton(ActionEvent actionEvent) {
+    public void handleEditUserButton(ActionEvent actionEvent) throws IOException {
         typedFullName = fullNameField.getText();
         typedLoginName = loginNameField.getText();
         typedPassword = passwordField.getText();

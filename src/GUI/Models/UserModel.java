@@ -39,8 +39,13 @@ public class UserModel {
         AdminMainViewController.usersObservableList.addAll(userManager.getUsersList());
     }
 
-    public void editUser(User selectedUser,String fullName, String loginName, String password){
+    public void editUser(User selectedUser,String fullName, String loginName, String password) throws IOException {
         userManager.editUser(selectedUser,fullName,loginName,password);
+        userManager.emptyLists();
+        userManager.fillLists();
+        AdminMainViewController.emptyStaticLists();
+        AdminMainViewController.adminsObservableList.addAll(userManager.getAdminsList());
+        AdminMainViewController.usersObservableList.addAll(userManager.getUsersList());
     }
 
     public void deleteUser(User selectedUser) throws SQLException, IOException {
