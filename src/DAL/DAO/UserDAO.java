@@ -102,7 +102,7 @@ public class UserDAO {
         }
     }
 
-    public void editUser(String fullName, String loginName, String password) {
+    public void editUser(User user,String fullName, String loginName, String password) {
         // Implementering her.
     }
     public void editLogin(int id, String loginName, String password){
