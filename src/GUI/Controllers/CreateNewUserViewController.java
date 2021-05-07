@@ -52,6 +52,8 @@ public class CreateNewUserViewController implements Initializable {
         if (typedFullName != null && typedLoginName != null && typedPassword != null) {
             userModel.addUser(typedFullName, typedLoginName, typedPassword, isAdmin);
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("User created");
+            alert.setHeaderText("Success!");
             alert.setContentText("User " + typedFullName + " has been created!");
             alert.showAndWait();
             Stage stage = (Stage) createUserButton.getScene().getWindow();

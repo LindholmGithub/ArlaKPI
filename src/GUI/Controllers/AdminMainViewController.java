@@ -11,10 +11,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
-import javafx.scene.control.SelectionMode;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -23,6 +20,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class AdminMainViewController implements Initializable {
@@ -78,10 +76,22 @@ public class AdminMainViewController implements Initializable {
         selectedUser = usersList.getSelectionModel().getSelectedItem();
         selectedAdmin = adminsList.getSelectionModel().getSelectedItem();
         try {
-            if (selectedUser != null) {
-                userModel.deleteUser(selectedUser);
-            } else if (selectedAdmin != null){
-                userModel.deleteUser(selectedAdmin);
+            if (selectedUser != null || selectedAdmin != null) {
+                Alert confirm = new Alert(Alert.AlertType.CONFIRMATION);
+                confirm.setTitle("User deletion");
+                confirm.setContentText("Are you sure you want to delete the selected user?");
+                Optional<ButtonType> result = confirm.showAndWait();
+                ButtonType button = result.orElse(ButtonType.CANCEL);
+                if (button == ButtonType.OK) {
+                    if (selectedUser != null) {
+                        userModel.deleteUser(selectedUser);
+                    }
+                    else if (selectedAdmin != null) {
+                        userModel.deleteUser(selectedAdmin);
+                    }
+                } else {
+                    confirm.close();
+                }
             }
             else {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
