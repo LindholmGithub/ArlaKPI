@@ -32,11 +32,10 @@ public class LoginViewController implements Initializable {
 
     private User selectedUser;
     private LoginModel loginModel;
-    private CSVDAO csvdao;
 
     public LoginViewController() throws IOException {
         loginModel = new LoginModel();
-        csvdao = new CSVDAO();
+
     }
 
     public void handleLoginButton(ActionEvent actionEvent) throws SQLException, IOException {

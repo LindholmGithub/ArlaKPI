@@ -1,34 +1,32 @@
 package DAL.DAO;
 
+import com.opencsv.CSVReader;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.XYChart;
+
 import java.io.*;
 import java.util.Scanner;
 
 public class CSVDAO {
-    private Scanner sc;
-
-    public CSVDAO() throws FileNotFoundException {
-        sc = new Scanner(new File("src/Resources/Files/ArlaKPI.csv"));
-        sc.useDelimiter(",");
+    public CSVDAO() throws Exception {
+        printCSV();
     }
 
 
-    public void printCSV(){
-        try {
-            sc = new Scanner(new File("src/Resources/Files/ArlaKPI.csv"));
-            sc.useDelimiter(",");
-            while(sc.hasNext()){
-                System.out.print(sc.next());
+    public XYChart.Series printCSV() throws Exception {
+        XYChart.Series series = new XYChart.Series();
+        try (CSVReader csvReader = new CSVReader(new FileReader("src/Resources/Files/ArlaKPI.csv"))){
+            String[] nextLine;
+            while((nextLine = csvReader.readNext()) != null){
+                String products = String.valueOf(nextLine[0]);
+                int sales = Integer.parseInt(nextLine[1]);
+                series.getData().add(new XYChart.Data(products,sales));
             }
-        } catch (FileNotFoundException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
-
+        return series;
     }
-
-
-
-
-
 }
 
 

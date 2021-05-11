@@ -48,6 +48,14 @@
     -fx-font-size: 2em ;
     -fx-font-family: Calibri;
 }
+
+#data-fonts {
+    -fx-font-family: Calibri;
+    -fx-tick-label-font-family: Calibri;
+    -fx-tick-label-font-size: 1.5em;
+    -fx-tick-label-font-weight: bold;
+}
+
 #createUserPane {
     -fx-border-color: #000;
     -fx-border-style: solid;
