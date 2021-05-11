@@ -1,6 +1,7 @@
 package GUI.Controllers;
 
 import BE.User;
+import DAL.DAO.CSVDAO;
 import GUI.Models.LoginModel;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -31,9 +32,11 @@ public class LoginViewController implements Initializable {
 
     private User selectedUser;
     private LoginModel loginModel;
+    private CSVDAO csvdao;
 
     public LoginViewController() throws IOException {
         loginModel = new LoginModel();
+        csvdao = new CSVDAO();
     }
 
     public void handleLoginButton(ActionEvent actionEvent) throws SQLException, IOException {
