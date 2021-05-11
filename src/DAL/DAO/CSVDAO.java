@@ -8,12 +8,8 @@ import java.io.*;
 import java.util.Scanner;
 
 public class CSVDAO {
-    public CSVDAO() throws Exception {
-        printCSV();
-    }
 
-
-    public XYChart.Series printCSV() throws Exception {
+    public XYChart.Series getCSVData() throws Exception {
         XYChart.Series series = new XYChart.Series();
         try (CSVReader csvReader = new CSVReader(new FileReader("src/Resources/Files/ArlaKPI.csv"))){
             String[] nextLine;

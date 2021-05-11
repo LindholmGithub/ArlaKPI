@@ -51,10 +51,14 @@
 
 #data-fonts {
     -fx-font-family: Calibri;
+    -fx-font-size: 1.4em;
+    -fx-font-weight: bold;
+    -fx-tick-label-fill: #575757;
     -fx-tick-label-font-family: Calibri;
-    -fx-tick-label-font-size: 1.5em;
+    -fx-tick-label-font-size: 1.4em;
     -fx-tick-label-font-weight: bold;
 }
+
 
 #createUserPane {
     -fx-border-color: #000;

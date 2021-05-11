@@ -15,7 +15,10 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -29,6 +32,8 @@ public class LoginViewController implements Initializable {
     private PasswordField passwordField;
     @FXML
     private TextField loginField;
+    private final int minWidth = 420;
+    private final int minHeight = 450;
 
     private User selectedUser;
     private LoginModel loginModel;
@@ -55,14 +60,18 @@ public class LoginViewController implements Initializable {
             else if (selectedUser != null && !selectedUser.isAdmin()) {
                 URL userUrl = new File("src/GUI/Views/UserMainView.fxml").toURI().toURL();
                 Parent root = FXMLLoader.load(userUrl);
-                Scene adminViewScene = new Scene(root,1270,720);
-                thisStage.setScene(adminViewScene);
+                Scene scene = new Scene(root,1270,720);
+                Stage stage = new Stage();
+                stage.initStyle(StageStyle.UTILITY);
+                stage.setMinHeight(minHeight);
+                stage.setMinWidth(minWidth);
+                stage.setScene(scene);
                 thisStage.hide();
-                thisStage.show();
+                stage.show();
             }
         } catch (IOException ioException){
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("Wrong login, please try again!");
+            alert.setContentText("An error occurred, please try again!");
             alert.showAndWait();
         }
     }
