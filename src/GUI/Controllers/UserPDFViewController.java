@@ -26,7 +26,7 @@ public class UserPDFViewController implements Initializable {
             File file = new File("src/Resources/Temp/temp.jpg");
             Image image = new Image(file.toURI().toString());
             pdfImage.setImage(image);
-            
+
         } catch (IOException e) {
             e.printStackTrace();
         }

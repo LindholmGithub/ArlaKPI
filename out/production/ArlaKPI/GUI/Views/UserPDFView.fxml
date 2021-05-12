@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="1080.0" maxWidth="1920.0" minHeight="450.0" minWidth="425.0" prefHeight="600.0" prefWidth="800.0" stylesheets="@../../Resources/CSS/MainTheme.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controllers.UserPDFViewController">
-   <center>
-      <VBox fillWidth="false" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
-         <children>
-            <ImageView fx:id="pdfImage" pickOnBounds="true" preserveRatio="true" />
-         </children>
-      </VBox>
-   </center>
-</BorderPane>
+
+<ScrollPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controllers.UserPDFViewController">
+   <content>
+      <ImageView fx:id="pdfImage" pickOnBounds="true" preserveRatio="true" />
+   </content>
+</ScrollPane>

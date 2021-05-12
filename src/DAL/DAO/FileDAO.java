@@ -33,7 +33,7 @@ public class FileDAO {
     public void getPDFData() throws IOException {
         PDDocument pdf = PDDocument.load(new File("src/Resources/Files/Compulsory_AsignmentOS.pdf"));
         PDFRenderer pdfRenderer = new PDFRenderer(pdf);
-        BufferedImage bim = pdfRenderer.renderImageWithDPI(0,300, ImageType.RGB);
+        BufferedImage bim = pdfRenderer.renderImageWithDPI(0,100, ImageType.RGB);
         ImageIO.write(bim,"JPG",new File("src/Resources/Temp/temp.jpg"));
         pdf.close();
     }
