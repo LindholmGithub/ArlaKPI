@@ -56,9 +56,9 @@ public class LoginViewController implements Initializable {
                 thisStage.show();
             }
             else if (selectedUser != null && !selectedUser.isAdmin()) {
-                URL userUrl = new File("src/GUI/Views/UserPDFView.fxml").toURI().toURL();
+                URL userUrl = new File("src/GUI/Views/UserXLSXView.fxml").toURI().toURL();
                 Parent root = FXMLLoader.load(userUrl);
-                Scene scene = new Scene(root,1000,720);
+                Scene scene = new Scene(root,900,1000);
                 Stage stage = new Stage();
                 stage.setMinHeight(minHeight);
                 stage.setMinWidth(minWidth);

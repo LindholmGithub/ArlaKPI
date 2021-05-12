@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controllers.UserXLSXViewController">
+   <center>
+      <TableView id="excelTable" fx:id="excelTable" prefHeight="500.0" prefWidth="500.0" stylesheets="@../../Resources/CSS/MainTheme.css" BorderPane.alignment="CENTER">
+        <columns>
+          <TableColumn prefWidth="122.0" text="Q1" />
+          <TableColumn prefWidth="128.0" text="Q2" />
+            <TableColumn prefWidth="125.0" text="Q3" />
+            <TableColumn minWidth="0.0" prefWidth="124.0" text="Q4" />
+        </columns>
+      </TableView>
+   </center>
+   <top>
+      <Label text="Table" BorderPane.alignment="CENTER">
+         <font>
+            <Font name="Calibri Bold" size="24.0" />
+         </font>
+         <BorderPane.margin>
+            <Insets bottom="5.0" top="5.0" />
+         </BorderPane.margin>
+      </Label>
+   </top>
+</BorderPane>
