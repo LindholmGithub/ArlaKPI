@@ -39,6 +39,6 @@
     <orderEntry type="library" name="org.junit.jupiter:junit-jupiter:5.5.2" level="project" />
     <orderEntry type="library" name="com.opencsv:opencsv:5.4" level="project" />
     <orderEntry type="library" name="org.apache.pdfbox:pdfbox:2.0.22" level="project" />
-    <orderEntry type="library" name="org.apache.pdfbox:jbig2-imageio:3.0.3" level="project" />
+    <orderEntry type="library" name="gembox-spreadsheet" level="project" />
   </component>
 </module>

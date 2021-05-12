@@ -1,19 +1,22 @@
 package DAL.DAO;
 
+import com.gembox.spreadsheet.CellValueType;
+import com.gembox.spreadsheet.ExcelCell;
+import com.gembox.spreadsheet.ExcelFile;
+import com.gembox.spreadsheet.ExcelWorksheet;
 import com.opencsv.CSVReader;
 import javafx.scene.chart.XYChart;
-import javafx.scene.image.Image;
 import org.apache.pdfbox.pdmodel.PDDocument;
-import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.rendering.ImageType;
 import org.apache.pdfbox.rendering.PDFRenderer;
-
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.*;
-import java.util.List;
 
 public class FileDAO {
+
+    private int excelWidth;
+    private int excelHeight;
 
     public XYChart.Series getCSVData() throws Exception {
         XYChart.Series series = new XYChart.Series();
@@ -38,4 +41,21 @@ public class FileDAO {
         pdf.close();
     }
 
+    public String[][] getXLSXData() throws IOException {
+
+        ExcelFile excelFile = ExcelFile.load("src/Resources/Files/Data2.xlsx");
+        ExcelWorksheet excelWorksheet = excelFile.getWorksheet(0);
+        int maxColumns = excelWorksheet.calculateMaxUsedColumns();
+        int maxRows = excelWorksheet.getRows().size();
+        String[][] sourceData = new String[maxRows][maxColumns];
+        for (int row = 0; row < sourceData.length; row++){
+            for (int column = 0;column < sourceData[row].length;column++){
+                ExcelCell cell = excelWorksheet.getCell(row, column);
+                if (cell.getValueType() != CellValueType.NULL){
+                    sourceData[row][column] = cell.getValue().toString();
+                }
+            }
+        }
+        return sourceData;
+    }
 }

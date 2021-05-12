@@ -58,6 +58,10 @@
     -fx-tick-label-font-size: 1.4em;
     -fx-tick-label-font-weight: bold;
 }
+#excelTable {
+    -fx-font-family: Calibri;
+    -fx-font-size: 2em;
+}
 
 
 #createUserPane {
