@@ -1,6 +1,5 @@
 package GUI.Controllers;
 
-import DAL.DAO.CSVDAO;
 import GUI.Models.FileModel;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -14,10 +13,6 @@ import java.util.ResourceBundle;
 
 public class UserMainViewController implements Initializable {
 
-    @FXML
-    private CategoryAxis xAxisCategory;
-    @FXML
-    private NumberAxis yAxisSales;
     @FXML
     private BarChart CSVBarChart;
 

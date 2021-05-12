@@ -1,7 +1,6 @@
 package GUI.Models;
 
 import BLL.FileManager;
-import DAL.DAO.CSVDAO;
 import javafx.scene.chart.XYChart;
 
 public class FileModel {

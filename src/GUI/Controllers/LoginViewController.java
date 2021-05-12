@@ -1,7 +1,6 @@
 package GUI.Controllers;
 
 import BE.User;
-import DAL.DAO.CSVDAO;
 import GUI.Models.LoginModel;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -15,7 +14,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -58,7 +56,7 @@ public class LoginViewController implements Initializable {
                 thisStage.show();
             }
             else if (selectedUser != null && !selectedUser.isAdmin()) {
-                URL userUrl = new File("src/GUI/Views/UserMainView.fxml").toURI().toURL();
+                URL userUrl = new File("src/GUI/Views/UserPDFView.fxml").toURI().toURL();
                 Parent root = FXMLLoader.load(userUrl);
                 Scene scene = new Scene(root,1270,720);
                 Stage stage = new Stage();
@@ -70,6 +68,7 @@ public class LoginViewController implements Initializable {
                 stage.show();
             }
         } catch (IOException ioException){
+            ioException.printStackTrace();
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText("An error occurred, please try again!");
             alert.showAndWait();

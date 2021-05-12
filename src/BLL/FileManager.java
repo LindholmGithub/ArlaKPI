@@ -1,16 +1,16 @@
 package BLL;
 
-import DAL.DAO.CSVDAO;
+import DAL.DAO.FileDAO;
 import javafx.scene.chart.XYChart;
 
 public class FileManager {
-    private CSVDAO csvDao;
+    private FileDAO fileDao;
 
     public FileManager(){
-        csvDao = new CSVDAO();
+        fileDao = new FileDAO();
     }
 
     public XYChart.Series getCSVData() throws Exception {
-        return csvDao.getCSVData();
+        return fileDao.getCSVData();
     }
 }

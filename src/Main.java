@@ -15,6 +15,8 @@ public class Main extends Application {
         primaryStage.setTitle("Arla KPI");
         primaryStage.getIcons().add(new Image("Resources/Images/ArlaLogo100x100.png"));
         Scene scene = new Scene(root,1270,720);
+        primaryStage.setMinWidth(350);
+        primaryStage.setMinHeight(470);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
