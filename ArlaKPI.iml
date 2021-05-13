@@ -40,5 +40,6 @@
     <orderEntry type="library" name="com.opencsv:opencsv:5.4" level="project" />
     <orderEntry type="library" name="org.apache.pdfbox:pdfbox:2.0.22" level="project" />
     <orderEntry type="library" name="gembox-spreadsheet" level="project" />
+    <orderEntry type="library" name="org.openjfx:javafx-web:12-ea+6" level="project" />
   </component>
 </module>

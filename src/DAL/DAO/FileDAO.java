@@ -15,9 +15,6 @@ import java.io.*;
 
 public class FileDAO {
 
-    private int excelWidth;
-    private int excelHeight;
-
     public XYChart.Series getCSVData() throws Exception {
         XYChart.Series series = new XYChart.Series();
         try (CSVReader csvReader = new CSVReader(new FileReader("src/Resources/Files/ArlaKPI.csv"))){

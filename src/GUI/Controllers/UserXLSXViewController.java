@@ -47,6 +47,8 @@ public class UserXLSXViewController implements Initializable {
         for (int i = 0; i < dataSource[0].length;i++){
             final int currentColumn = i;
             TableColumn<ObservableList<String>, String> column = new TableColumn<>(ExcelColumnCollection.columnIndexToName(currentColumn));
+            column.setSortable(false);
+            column.setReorderable(false);
             column.setCellValueFactory(param ->  new ReadOnlyObjectWrapper<>(param.getValue().get(currentColumn)));
             column.setEditable(true);
             column.setCellFactory(TextFieldTableCell.forTableColumn());
