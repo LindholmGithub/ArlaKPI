@@ -36,6 +36,15 @@ public class AdminDAO {
     }
 
     public void deleteViewFromUser(User user, String fileURL){
-
+        int userID = user.getId();
+        String sql = "DELETE FROM UserView WHERE UserID = " + userID + "AND fileURL =" + fileURL + ";";
+        Connection con = connectionPool.checkOut();
+        try(PreparedStatement st = con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS)){
+            st.executeUpdate();
+        } catch (SQLException exception) {
+            exception.printStackTrace();
+        } finally {
+            connectionPool.checkIn(con);
+        }
     }
 }
