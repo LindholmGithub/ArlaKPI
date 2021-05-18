@@ -1,4 +1,6 @@
 package GUI.Controllers;
+import BE.User;
+import GUI.Models.FileModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -27,12 +29,20 @@ public class UserSelectViewController implements Initializable {
     private Button logoutButton;
     @FXML
     private ChoiceBox<Integer> updateChoiceBox;
+    private User selectedUser;
+    private FileModel fileModel;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        updateChoiceBox.getItems().setAll(1,2,3,4,5);
-        listOfViews.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-        listOfViews.getItems().setAll("Department 1","Department 2","Department 3");
+        try {
+            fileModel = new FileModel();
+            updateChoiceBox.getItems().setAll(1,2,3,4,5);
+            listOfViews.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+            selectedUser = LoginViewController.getSelectedUser();
+            listOfViews.getItems().setAll(fileModel.getAllViewsForUser(selectedUser));
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+        }
     }
 
     public void handleLoadButton(ActionEvent actionEvent) {
@@ -52,6 +62,5 @@ public class UserSelectViewController implements Initializable {
         stage.setScene(scene);
         thisStage.hide();
         stage.show();
-
     }
 }

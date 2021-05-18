@@ -1,5 +1,8 @@
 package GUI.Controllers;
 
+import BE.FileInfo;
+import BE.User;
+import GUI.Models.FileModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,19 +23,27 @@ import java.util.ResourceBundle;
 public class AdminEditUserViewController implements Initializable {
 
     @FXML
-    private ListView listOfViews;
+    private ListView<FileInfo> listOfViews;
     @FXML
     private Button loadButton;
     @FXML
     private Button logoutButton;
     @FXML
     private ChoiceBox<Integer> updateChoiceBox;
+    private FileModel fileModel;
+    private User selectedUser;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        updateChoiceBox.getItems().setAll(1,2,3,4,5);
-        listOfViews.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-        listOfViews.getItems().setAll("Department 1","Department 2","Department 3");
+        try {
+            fileModel = new FileModel();
+            updateChoiceBox.getItems().setAll(1,2,3,4,5);
+            listOfViews.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+            selectedUser = AdminMainViewController.getSelectedUser();
+            listOfViews.getItems().setAll(fileModel.getAllViewsForUser(selectedUser));
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+        }
     }
 
     public void handleLogoutButton(ActionEvent actionEvent) {
@@ -41,9 +52,10 @@ public class AdminEditUserViewController implements Initializable {
     }
 
     public void handleDeleteButton(ActionEvent actionEvent) {
-        int selectedIdx = listOfViews.getSelectionModel().getSelectedIndex();
-        if (selectedIdx != -1) {
-            listOfViews.getItems().remove(selectedIdx);
+        FileInfo selectedFile = listOfViews.getSelectionModel().getSelectedItem();
+        if (selectedFile != null) {
+            fileModel.deleteViewFromUser(selectedUser,selectedFile.getFilePath());
+            listOfViews.getSelectionModel().clearSelection();
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText("Please select something from the list.");

@@ -33,7 +33,7 @@ public class LoginViewController implements Initializable {
     private final int minWidth = 420;
     private final int minHeight = 450;
 
-    private User selectedUser;
+    private static User selectedUser;
     private LoginModel loginModel;
 
     public LoginViewController() throws IOException {
@@ -72,6 +72,10 @@ public class LoginViewController implements Initializable {
             alert.setContentText("An error occurred, please try again!");
             alert.showAndWait();
         }
+    }
+
+    public static User getSelectedUser(){
+        return selectedUser;
     }
 
     @Override

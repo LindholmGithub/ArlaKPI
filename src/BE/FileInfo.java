@@ -35,4 +35,9 @@ public class FileInfo {
     public void setFilePath(String filePath) {
         this.filePath = filePath;
     }
+
+    @Override
+    public String toString() {
+        return fileName;
+    }
 }

@@ -75,7 +75,7 @@ public class FileDAO {
         ArrayList<FileInfo> allFiles = new ArrayList<>(){};
         int userID = user.getId();
         try (Connection con = connectionPool.checkOut()){
-            String sql = "SELECT * FROM UserView WHERE " + userID + ";";
+            String sql = "SELECT * FROM UserView WHERE UserView.UserID = " + userID + ";";
             Statement statement = con.createStatement();
             if(statement.execute(sql)){
                 ResultSet resultSet = statement.getResultSet();

@@ -143,7 +143,7 @@ public class AdminMainViewController implements Initializable {
                 stage.setScene(scene);
                 stage.show();
             } else if (selectedAdmin != null){
-                alert.setContentText("Please select a User, admins are not editable");
+                alert.setContentText("Please select a User, admins doesn't have views.");
                 alert.showAndWait();
             }
             else {

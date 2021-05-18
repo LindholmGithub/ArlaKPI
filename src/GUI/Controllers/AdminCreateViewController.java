@@ -45,7 +45,6 @@ public class AdminCreateViewController implements Initializable {
         if (!file.isEmpty()){
             filePathField.setText(file.get(0).getPath());
         }
-
     }
 
     public void handleCreateViewButton(ActionEvent actionEvent) {

@@ -1,11 +1,13 @@
 package BLL;
 
+import BE.FileInfo;
 import BE.User;
 import DAL.DAO.AdminDAO;
 import DAL.DAO.FileDAO;
 import javafx.scene.chart.XYChart;
 
 import java.io.IOException;
+import java.util.List;
 
 public class FileManager {
     private FileDAO fileDao;
@@ -29,5 +31,13 @@ public class FileManager {
     }
     public void addViewToUser(User user, String nameOfFile, String formatType, String fileURL){
         adminDAO.addViewToUser(user,nameOfFile,formatType,fileURL);
+    }
+
+    public void deleteViewFromUser(User user, String fileURL){
+        adminDAO.deleteViewFromUser(user,fileURL);
+    }
+
+    public List<FileInfo> getAllViewsForUser(User user){
+        return fileDao.getAllViewsForUser(user);
     }
 }
