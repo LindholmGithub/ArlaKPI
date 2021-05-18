@@ -12,6 +12,7 @@ import java.util.List;
 public class FileManager {
     private FileDAO fileDao;
     private AdminDAO adminDAO;
+    private String fileType;
 
     public FileManager() throws IOException {
         fileDao = new FileDAO();
@@ -37,7 +38,30 @@ public class FileManager {
         adminDAO.deleteViewFromUser(user,fileURL);
     }
 
-    public List<FileInfo> getAllViewsForUser(User user){
+    public List<FileInfo> getAllViewsForUser(User user) {
         return fileDao.getAllViewsForUser(user);
+    }
+
+    public String getFileType(FileInfo fileInfo){
+        fileType = fileInfo.getFileType();
+        return fileType;
+    }
+
+    public void openSpecificFile(String fileType){
+        //TODO
+        switch (fileType){
+            case "pdf":
+                //code here
+                break;
+            case "csv":
+                //code here
+                break;
+            case "html":
+                //code here
+                break;
+            case "xlxs":
+                //code here
+                break;
+        }
     }
 }
