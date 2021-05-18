@@ -9,6 +9,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -128,6 +129,29 @@ public class AdminMainViewController implements Initializable {
     }
 
     public void handleEditViewButton(ActionEvent actionEvent) {
+        Stage thisStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        selectedUser = usersList.getSelectionModel().getSelectedItem();
+        selectedAdmin = adminsList.getSelectionModel().getSelectedItem();
+        try {
+            if (selectedUser != null || selectedAdmin != null) {
+                URL urlMoreInfo = new File("src/GUI/Views/AdminEditUserView.fxml").toURI().toURL();
+                Parent root = FXMLLoader.load(urlMoreInfo);
+                Scene scene = new Scene(root);
+                Stage stage = new Stage();
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.initStyle(StageStyle.UNDECORATED);
+                stage.setScene(scene);
+                thisStage.hide();
+                stage.show();
+            }
+            else {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Please select a user first!");
+                alert.showAndWait();
+            }
+        } catch (IOException sqlException) {
+            sqlException.printStackTrace();
+        }
     }
 
     @Override
