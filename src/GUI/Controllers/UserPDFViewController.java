@@ -1,4 +1,6 @@
 package GUI.Controllers;
+import BE.FileInfo;
+import BE.User;
 import GUI.Models.FileModel;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -13,14 +15,18 @@ public class UserPDFViewController implements Initializable {
     private ImageView pdfImage;
     private FileModel fileModel;
     private String filePath;
+    private String fileName;
+    private FileInfo selectedFileInfo;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
             fileModel = new FileModel();
-            filePath = UserSelectViewController.getSelectedFilePath();
+            selectedFileInfo = UserSelectViewController.getSelectedFileInfo();
+            filePath = selectedFileInfo.getFilePath();
+            fileName = "src/Resources/Temp/" + filePath.substring(filePath.lastIndexOf("\\")+1,filePath.lastIndexOf(".")) + ".jpg";
             fileModel.getPDFData(filePath);
-            File file = new File("src/Resources/Temp/temp.jpg");
+            File file = new File(fileName);
             Image image = new Image(file.toURI().toString());
             pdfImage.setImage(image);
 

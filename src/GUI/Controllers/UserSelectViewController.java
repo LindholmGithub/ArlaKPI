@@ -33,7 +33,7 @@ public class UserSelectViewController implements Initializable {
     private ChoiceBox<Integer> updateChoiceBox;
     private User selectedUser;
     private FileModel fileModel;
-    private static String selectedFilePath;
+    private static FileInfo selectedFileInfo;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -49,9 +49,8 @@ public class UserSelectViewController implements Initializable {
     }
 
     public void handleLoadButton(ActionEvent actionEvent) throws Exception {
-        FileInfo selectedFile = listOfViews.getSelectionModel().getSelectedItem();
-        String fileType = selectedFile.getFileType();
-        selectedFilePath = selectedFile.getFilePath();
+        selectedFileInfo = listOfViews.getSelectionModel().getSelectedItem();
+        String fileType = selectedFileInfo.getFileType();
         switch (fileType){
             case "pdf":
                 URL userUrl = new File("src/GUI/Views/UserPDFView.fxml").toURI().toURL();
@@ -62,19 +61,19 @@ public class UserSelectViewController implements Initializable {
                 stage.show();
                 break;
             case "csv":
-                fileModel.getCSVData(selectedFile.getFilePath());
+                fileModel.getCSVData(selectedFileInfo.getFilePath());
                 break;
             case "html":
-                //code here
+                //TODO Code here
                 break;
             case "xlxs":
-                fileModel.getXLSXData(selectedFile.getFilePath());
+                fileModel.getXLSXData(selectedFileInfo.getFilePath());
                 break;
         }
     }
 
-    public static String getSelectedFilePath(){
-        return selectedFilePath;
+    public static FileInfo getSelectedFileInfo(){
+        return selectedFileInfo;
     }
 
     public void handleLogoutButton(ActionEvent actionEvent) throws IOException {
