@@ -6,7 +6,7 @@ public class FileInfo {
     private String filePath;
 
 
-    public FileInfo(int fileID, String fileName, String fileType, String filePath) {
+    public FileInfo( String fileName, String fileType, String filePath) {
         this.fileName = fileName;
         this.fileType = fileType;
         this.filePath = filePath;
