@@ -1,5 +1,6 @@
 package BLL;
 
+import BE.FileInfo;
 import BE.User;
 import DAL.DAO.AdminDAO;
 import DAL.DAO.FileDAO;
@@ -10,6 +11,7 @@ import java.io.IOException;
 public class FileManager {
     private FileDAO fileDao;
     private AdminDAO adminDAO;
+    private String fileType;
 
     public FileManager() throws IOException {
         fileDao = new FileDAO();
@@ -29,5 +31,28 @@ public class FileManager {
     }
     public void addViewToUser(User user, String nameOfFile, String formatType, String fileURL){
         adminDAO.addViewToUser(user,nameOfFile,formatType,fileURL);
+    }
+
+    public String getFileType(FileInfo fileInfo){
+        fileType = fileInfo.getFileType();
+        return fileType;
+    }
+
+    public void openSpecificFile(String fileType){
+        //TODO
+        switch (fileType){
+            case "pdf":
+                //code here
+                break;
+            case "csv":
+                //code here
+                break;
+            case "html":
+                //code here
+                break;
+            case "xlxs":
+                //code here
+                break;
+        }
     }
 }

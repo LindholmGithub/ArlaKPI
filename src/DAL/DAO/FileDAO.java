@@ -30,9 +30,9 @@ public class FileDAO {
         connectionPool = JDBCConnectionPool.getInstance();
     }
 
-    public XYChart.Series getCSVData() throws Exception {
+    public XYChart.Series getCSVData(String fileURL) throws Exception {
         XYChart.Series series = new XYChart.Series();
-        try (CSVReader csvReader = new CSVReader(new FileReader("src/Resources/Files/ArlaKPI.csv"))){
+        try (CSVReader csvReader = new CSVReader(new FileReader(fileURL))){
             String[] nextLine;
             while((nextLine = csvReader.readNext()) != null){
                 String products = String.valueOf(nextLine[0]);
@@ -45,17 +45,17 @@ public class FileDAO {
         return series;
     }
 
-    public void getPDFData() throws IOException {
-        PDDocument pdf = PDDocument.load(new File("src/Resources/Files/Compulsory_AsignmentOS.pdf"));
+    public void getPDFData(String fileURL) throws IOException {
+        PDDocument pdf = PDDocument.load(new File(fileURL));
         PDFRenderer pdfRenderer = new PDFRenderer(pdf);
         BufferedImage bim = pdfRenderer.renderImageWithDPI(0,100, ImageType.RGB);
         ImageIO.write(bim,"JPG",new File("src/Resources/Temp/temp.jpg"));
         pdf.close();
     }
 
-    public String[][] getXLSXData() throws IOException {
+    public String[][] getXLSXData(String fileURL) throws IOException {
 
-        ExcelFile excelFile = ExcelFile.load("src/Resources/Files/Data2.xlsx");
+        ExcelFile excelFile = ExcelFile.load(fileURL);
         ExcelWorksheet excelWorksheet = excelFile.getWorksheet(0);
         int maxColumns = excelWorksheet.calculateMaxUsedColumns();
         int maxRows = excelWorksheet.getRows().size();
@@ -92,4 +92,5 @@ public class FileDAO {
         }
         return allFiles;
     }
+
 }
