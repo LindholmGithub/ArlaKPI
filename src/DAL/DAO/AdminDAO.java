@@ -23,7 +23,11 @@ public class AdminDAO {
         String sql = "INSERT INTO UserView (UserID, NameOfFile, FormatType, FileURL) VALUES (?,?,?,?);";
         Connection con = connectionPool.checkOut();
         try(PreparedStatement st = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)){
-
+            st.setInt(1,userID);
+            st.setString(2,nameOfFile);
+            st.setString(3,formatType);
+            st.setString(4,fileURL);
+            st.executeUpdate();
         } catch (SQLException exception) {
             exception.printStackTrace();
         } finally {
@@ -31,7 +35,7 @@ public class AdminDAO {
         }
     }
 
-    public void deleteViewFromUser(User user){
+    public void deleteViewFromUser(User user, String fileURL){
 
     }
 }
