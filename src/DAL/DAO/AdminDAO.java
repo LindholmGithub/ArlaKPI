@@ -18,7 +18,7 @@ public class AdminDAO {
     }
 
 
-    public void addViewToUser(User user){
+    public void addViewToUser(User user, String nameOfFile, String formatType, String fileURL){
         int userID = user.getId();
         String sql = "INSERT INTO UserView (UserID, NameOfFile, FormatType, FileURL) VALUES (?,?,?,?);";
         Connection con = connectionPool.checkOut();
