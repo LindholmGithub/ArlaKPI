@@ -1,12 +1,12 @@
 package BE;
 
-public class File {
+public class FileInfo {
     private String fileName;
     private String fileType;
     private String filePath;
 
 
-    public File(int fileID, String fileName, String fileType, String filePath) {
+    public FileInfo(int fileID, String fileName, String fileType, String filePath) {
         this.fileName = fileName;
         this.fileType = fileType;
         this.filePath = filePath;
