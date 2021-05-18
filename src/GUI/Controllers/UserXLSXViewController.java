@@ -27,8 +27,9 @@ public class UserXLSXViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         SpreadsheetInfo.setLicense("FREE-LIMITED-KEY");
-        fileModel = new FileModel();
+
         try {
+            fileModel = new FileModel();
             String [][] datasource = fileModel.getXLSXData();
             fillTable(datasource);
 

@@ -15,8 +15,8 @@ public class UserPDFViewController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        fileModel = new FileModel();
         try {
+            fileModel = new FileModel();
             fileModel.getPDFData();
             File file = new File("src/Resources/Temp/temp.jpg");
             Image image = new Image(file.toURI().toString());

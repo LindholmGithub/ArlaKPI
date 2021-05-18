@@ -129,11 +129,11 @@ public class AdminMainViewController implements Initializable {
     }
 
     public void handleEditViewButton(ActionEvent actionEvent) {
-        Stage thisStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         selectedUser = usersList.getSelectionModel().getSelectedItem();
         selectedAdmin = adminsList.getSelectionModel().getSelectedItem();
+        Alert alert = new Alert(Alert.AlertType.ERROR);
         try {
-            if (selectedUser != null || selectedAdmin != null) {
+            if (selectedUser != null) {
                 URL urlMoreInfo = new File("src/GUI/Views/AdminEditUserView.fxml").toURI().toURL();
                 Parent root = FXMLLoader.load(urlMoreInfo);
                 Scene scene = new Scene(root);
@@ -141,11 +141,13 @@ public class AdminMainViewController implements Initializable {
                 stage.initModality(Modality.APPLICATION_MODAL);
                 stage.initStyle(StageStyle.UNDECORATED);
                 stage.setScene(scene);
-                thisStage.hide();
                 stage.show();
+            } else if (selectedAdmin != null){
+                alert.setContentText("Please select a User, admins are not editable");
+                alert.showAndWait();
             }
             else {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
+
                 alert.setContentText("Please select a user first!");
                 alert.showAndWait();
             }
