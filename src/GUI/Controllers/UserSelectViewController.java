@@ -1,4 +1,5 @@
 package GUI.Controllers;
+import BE.FileInfo;
 import BE.User;
 import GUI.Models.FileModel;
 import javafx.event.ActionEvent;
@@ -17,12 +18,13 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class UserSelectViewController implements Initializable {
 
     @FXML
-    private ListView listOfViews;
+    private ListView<FileInfo> listOfViews;
     @FXML
     private Button loadButton;
     @FXML
@@ -31,6 +33,7 @@ public class UserSelectViewController implements Initializable {
     private ChoiceBox<Integer> updateChoiceBox;
     private User selectedUser;
     private FileModel fileModel;
+    private static String selectedFilePath;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -45,8 +48,33 @@ public class UserSelectViewController implements Initializable {
         }
     }
 
-    public void handleLoadButton(ActionEvent actionEvent) {
-        System.out.println(listOfViews.getSelectionModel().getSelectedItems());
+    public void handleLoadButton(ActionEvent actionEvent) throws Exception {
+        FileInfo selectedFile = listOfViews.getSelectionModel().getSelectedItem();
+        String fileType = selectedFile.getFileType();
+        selectedFilePath = selectedFile.getFilePath();
+        switch (fileType){
+            case "pdf":
+                URL userUrl = new File("src/GUI/Views/UserPDFView.fxml").toURI().toURL();
+                Parent root = FXMLLoader.load(userUrl);
+                Scene scene = new Scene(root,800,600);
+                Stage stage = new Stage();
+                stage.setScene(scene);
+                stage.show();
+                break;
+            case "csv":
+                fileModel.getCSVData(selectedFile.getFilePath());
+                break;
+            case "html":
+                //code here
+                break;
+            case "xlxs":
+                fileModel.getXLSXData(selectedFile.getFilePath());
+                break;
+        }
+    }
+
+    public static String getSelectedFilePath(){
+        return selectedFilePath;
     }
 
     public void handleLogoutButton(ActionEvent actionEvent) throws IOException {

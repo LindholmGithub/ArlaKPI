@@ -18,16 +18,16 @@ public class FileModel {
         fileManager = new FileManager();
     }
 
-    public XYChart.Series getCSVData() throws Exception {
-        return fileManager.getCSVData();
+    public XYChart.Series getCSVData(String fileURL) throws Exception {
+        return fileManager.getCSVData(fileURL);
     }
 
-    public void getPDFData() throws IOException {
-        fileManager.getPDFData();
+    public String getPDFData(String fileURL) throws IOException {
+        return fileManager.getPDFData(fileURL);
     }
 
-    public String[][] getXLSXData() throws IOException {
-        return fileManager.getXLSXData();
+    public String[][] getXLSXData(String fileURL) throws IOException {
+        return fileManager.getXLSXData(fileURL);
     }
 
     public void addViewToUser(User user, String nameOfFile, String formatType, String fileURL){

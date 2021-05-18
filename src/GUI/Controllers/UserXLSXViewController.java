@@ -30,8 +30,8 @@ public class UserXLSXViewController implements Initializable {
 
         try {
             fileModel = new FileModel();
-            String [][] datasource = fileModel.getXLSXData();
-            fillTable(datasource);
+            //String [][] datasource = fileModel.getXLSXData();
+            //fillTable(datasource);
 
         } catch (IOException ioException) {
             ioException.printStackTrace();

@@ -19,16 +19,16 @@ public class FileManager {
         adminDAO = new AdminDAO();
     }
 
-    public XYChart.Series getCSVData() throws Exception {
-        return fileDao.getCSVData();
+    public XYChart.Series getCSVData(String fileURL) throws Exception {
+        return fileDao.getCSVData(fileURL);
     }
 
-    public void getPDFData() throws IOException {
-        fileDao.getPDFData();
+    public String getPDFData(String fileURL) throws IOException {
+        return fileDao.getPDFData(fileURL);
     }
 
-    public String[][] getXLSXData() throws IOException {
-        return fileDao.getXLSXData();
+    public String[][] getXLSXData(String fileURL) throws IOException {
+        return fileDao.getXLSXData(fileURL);
     }
     public void addViewToUser(User user, String nameOfFile, String formatType, String fileURL){
         adminDAO.addViewToUser(user,nameOfFile,formatType,fileURL);

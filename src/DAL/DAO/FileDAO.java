@@ -45,12 +45,14 @@ public class FileDAO {
         return series;
     }
 
-    public void getPDFData(String fileURL) throws IOException {
+    public String getPDFData(String fileURL) throws IOException {
         PDDocument pdf = PDDocument.load(new File(fileURL));
+        String pdfSavePath = "src/Resources/Temp/" + fileURL.substring(fileURL.lastIndexOf("\\")+1,fileURL.lastIndexOf(".")) + ".jpg";
         PDFRenderer pdfRenderer = new PDFRenderer(pdf);
         BufferedImage bim = pdfRenderer.renderImageWithDPI(0,100, ImageType.RGB);
-        ImageIO.write(bim,"JPG",new File("src/Resources/Temp/temp.jpg"));
+        ImageIO.write(bim,"JPG", new File(pdfSavePath));
         pdf.close();
+        return pdfSavePath;
     }
 
     public String[][] getXLSXData(String fileURL) throws IOException {

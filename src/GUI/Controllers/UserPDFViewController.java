@@ -12,12 +12,14 @@ public class UserPDFViewController implements Initializable {
     @FXML
     private ImageView pdfImage;
     private FileModel fileModel;
+    private String filePath;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
             fileModel = new FileModel();
-            fileModel.getPDFData();
+            filePath = UserSelectViewController.getSelectedFilePath();
+            fileModel.getPDFData(filePath);
             File file = new File("src/Resources/Temp/temp.jpg");
             Image image = new Image(file.toURI().toString());
             pdfImage.setImage(image);
