@@ -60,6 +60,7 @@ public class LoginViewController implements Initializable {
                 Parent root = FXMLLoader.load(userUrl);
                 Scene scene = new Scene(root);
                 Stage stage = new Stage();
+                stage.initStyle(StageStyle.UNDECORATED);
                 stage.setMinHeight(minHeight);
                 stage.setMinWidth(minWidth);
                 stage.setScene(scene);

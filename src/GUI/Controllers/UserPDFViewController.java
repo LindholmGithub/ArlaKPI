@@ -1,6 +1,5 @@
 package GUI.Controllers;
 import BE.FileInfo;
-import BE.User;
 import GUI.Models.FileModel;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -13,6 +12,7 @@ import java.util.ResourceBundle;
 public class UserPDFViewController implements Initializable {
     @FXML
     private ImageView pdfImage;
+
     private FileModel fileModel;
     private String filePath;
     private String fileName;

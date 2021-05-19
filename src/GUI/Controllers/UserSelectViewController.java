@@ -29,8 +29,7 @@ public class UserSelectViewController implements Initializable {
     private Button loadButton;
     @FXML
     private Button logoutButton;
-    @FXML
-    private ChoiceBox<Integer> updateChoiceBox;
+
     private User selectedUser;
     private FileModel fileModel;
     private static FileInfo selectedFileInfo;
@@ -39,7 +38,6 @@ public class UserSelectViewController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
             fileModel = new FileModel();
-            updateChoiceBox.getItems().setAll(1,2,3,4,5);
             listOfViews.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
             selectedUser = LoginViewController.getSelectedUser();
             listOfViews.getItems().setAll(fileModel.getAllViewsForUser(selectedUser));
@@ -53,21 +51,36 @@ public class UserSelectViewController implements Initializable {
         String fileType = selectedFileInfo.getFileType();
         switch (fileType){
             case "pdf":
-                URL userUrl = new File("src/GUI/Views/UserPDFView.fxml").toURI().toURL();
-                Parent root = FXMLLoader.load(userUrl);
-                Scene scene = new Scene(root,800,600);
-                Stage stage = new Stage();
-                stage.setScene(scene);
-                stage.show();
+                URL pdfUrl = new File("src/GUI/Views/UserPDFView.fxml").toURI().toURL();
+                Parent pdfRoot = FXMLLoader.load(pdfUrl);
+                Scene pdfScene = new Scene(pdfRoot,800,600);
+                Stage pdfStage = new Stage();
+                pdfStage.setScene(pdfScene);
+                pdfStage.show();
                 break;
             case "csv":
-                fileModel.getCSVData(selectedFileInfo.getFilePath());
+                URL csvUrl = new File("src/GUI/Views/UserCSVView.fxml").toURI().toURL();
+                Parent csvRoot = FXMLLoader.load(csvUrl);
+                Scene csvScene = new Scene(csvRoot,800,600);
+                Stage csvStage = new Stage();
+                csvStage.setScene(csvScene);
+                csvStage.show();
                 break;
             case "html":
-                //TODO Code here
+                URL htmlUrl = new File("src/GUI/Views/UserHTMLView.fxml").toURI().toURL();
+                Parent htmlRoot = FXMLLoader.load(htmlUrl);
+                Scene htmlScene = new Scene(htmlRoot,800,600);
+                Stage htmlStage = new Stage();
+                htmlStage.setScene(htmlScene);
+                htmlStage.show();
                 break;
-            case "xlxs":
-                fileModel.getXLSXData(selectedFileInfo.getFilePath());
+            case "xlsx":
+                URL xlsxUrl = new File("src/GUI/Views/UserXLSXView.fxml").toURI().toURL();
+                Parent xlsxRoot = FXMLLoader.load(xlsxUrl);
+                Scene xlsxScene = new Scene(xlsxRoot,800,600);
+                Stage xlsxStage = new Stage();
+                xlsxStage.setScene(xlsxScene);
+                xlsxStage.show();
                 break;
         }
     }

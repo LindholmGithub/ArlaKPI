@@ -1,5 +1,4 @@
 package GUI.Controllers;
-
 import BE.User;
 import GUI.Models.UserModel;
 import javafx.collections.FXCollections;
@@ -9,10 +8,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -25,6 +24,8 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class AdminMainViewController implements Initializable {
+    @FXML
+    private Button adminLogoutButton;
     @FXML
     private ListView<User> usersList;
     @FXML
@@ -139,7 +140,6 @@ public class AdminMainViewController implements Initializable {
                 Scene scene = new Scene(root);
                 Stage stage = new Stage();
                 stage.initModality(Modality.APPLICATION_MODAL);
-                stage.initStyle(StageStyle.UNDECORATED);
                 stage.setScene(scene);
                 stage.show();
             } else if (selectedAdmin != null){
@@ -194,5 +194,20 @@ public class AdminMainViewController implements Initializable {
             return selectedAdmin;
         }
         return null;
+    }
+
+    public void handleAdminLogoutButton(ActionEvent actionEvent) throws IOException {
+        Stage thisStage = (Stage) adminLogoutButton.getScene().getWindow();
+        URL userUrl = new File("src/GUI/Views/LoginView.fxml").toURI().toURL();
+        Parent root = FXMLLoader.load(userUrl);
+        Scene scene = new Scene(root,1270,720);
+        Stage stage = new Stage();
+        stage.setTitle("Arla KPI");
+        stage.getIcons().add(new Image("Resources/Images/ArlaLogo100x100.png"));
+        stage.setMinWidth(350);
+        stage.setMinHeight(470);
+        stage.setScene(scene);
+        thisStage.hide();
+        stage.show();
     }
 }

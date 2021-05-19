@@ -42,26 +42,4 @@ public class FileManager {
         return fileDao.getAllViewsForUser(user);
     }
 
-    public String getFileType(FileInfo fileInfo){
-        fileType = fileInfo.getFileType();
-        return fileType;
-    }
-
-    public void openSpecificFile(String fileType){
-        //TODO
-        switch (fileType){
-            case "pdf":
-                //code here
-                break;
-            case "csv":
-                //code here
-                break;
-            case "html":
-                //code here
-                break;
-            case "xlxs":
-                //code here
-                break;
-        }
-    }
 }

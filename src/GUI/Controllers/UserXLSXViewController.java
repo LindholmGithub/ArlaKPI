@@ -1,5 +1,6 @@
 package GUI.Controllers;
 
+import BE.FileInfo;
 import GUI.Models.FileModel;
 import com.gembox.spreadsheet.ExcelColumnCollection;
 import com.gembox.spreadsheet.SpreadsheetInfo;
@@ -23,6 +24,8 @@ public class UserXLSXViewController implements Initializable {
     @FXML
     private TableView excelTable;
     private FileModel fileModel;
+    private FileInfo selectedFileInfo;
+    private String filePath;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -30,9 +33,10 @@ public class UserXLSXViewController implements Initializable {
 
         try {
             fileModel = new FileModel();
-            //String [][] datasource = fileModel.getXLSXData();
-            //fillTable(datasource);
-
+            selectedFileInfo = UserSelectViewController.getSelectedFileInfo();
+            filePath = selectedFileInfo.getFilePath();
+            String [][] datasource = fileModel.getXLSXData(filePath);
+            fillTable(datasource);
         } catch (IOException ioException) {
             ioException.printStackTrace();
         }
