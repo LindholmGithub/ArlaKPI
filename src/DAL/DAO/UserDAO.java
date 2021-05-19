@@ -13,10 +13,18 @@ public class UserDAO {
 
     private final JDBCConnectionPool connectionPool;
 
+    /**
+     * constructor for instantiating the connection pool
+     * @throws IOException
+     */
     public UserDAO() throws IOException {
          connectionPool = JDBCConnectionPool.getInstance();
     }
 
+    /**
+     * compiles all users into a list
+     * @return
+     */
     public List<User> getAllUsers(){
         ArrayList<User> allUsers = new ArrayList<>(){};
 
@@ -39,6 +47,13 @@ public class UserDAO {
         return allUsers;
     }
 
+    /**
+     * adds a user to the database
+     * @param fullName
+     * @param loginName
+     * @param password
+     * @param isAdmin
+     */
     public void addUser(String fullName, String loginName, String password, boolean isAdmin) {
         // Mangler implementering
         String sql1 = "INSERT INTO Account (FullName, IsAdmin) VALUES (?,?);";
@@ -62,6 +77,12 @@ public class UserDAO {
 
     }
 
+    /**
+     * adds a login to the user
+     * @param id
+     * @param loginName
+     * @param password
+     */
     public void addLogin(int id,String loginName, String password){
         String sql = "Insert Into UserLogin (UsID, LoginName, LoginPassword) VALUES (?,?,?);";
         Connection con = connectionPool.checkOut();
@@ -77,6 +98,11 @@ public class UserDAO {
         }
     }
 
+    /**
+     * deletes the user
+     * @param selectedUser
+     * @throws SQLException
+     */
     public void deleteUser(User selectedUser) throws SQLException {
             String adminsql = "DELETE FROM Account Where UserID =" + selectedUser.getId() + ";";
             Connection con = connectionPool.checkOut();
@@ -90,6 +116,10 @@ public class UserDAO {
             }
     }
 
+    /**
+     * deletes the users login
+     * @param selectedUser
+     */
     public void deleteUserLogin(User selectedUser){
         String adminsql = "DELETE FROM UserLogin Where UsID =" + selectedUser.getId() + ";";
         Connection con = connectionPool.checkOut();
@@ -102,6 +132,13 @@ public class UserDAO {
         }
     }
 
+    /**
+     * edits user
+     * @param user
+     * @param fullName
+     * @param loginName
+     * @param password
+     */
     public void editUser(User user,String fullName, String loginName, String password) {
         String userSQL = "UPDATE Account SET FullName = ? WHERE UserID = " + user.getId() + ";";
         Connection con = connectionPool.checkOut();
@@ -115,6 +152,13 @@ public class UserDAO {
             connectionPool.checkIn(con);
         }
     }
+
+    /**
+     * edits user login
+     * @param id
+     * @param loginName
+     * @param password
+     */
     public void editLogin(int id, String loginName, String password){
         String loginSQL = "UPDATE UserLogin SET LoginName = ?, LoginPassword = ? WHERE UsID = " + id + ";";
         Connection con = connectionPool.checkOut();

@@ -32,7 +32,6 @@ public class LoginDAO {
      * @return
      * @throws SQLException
      */
-
     public User getUserFromLogin(String login, String password) throws SQLException {
         Connection connection = connectionPool.checkOut();
         String sql = "Select * from Account INNER JOIN UserLogin ON Account.UserID = Userlogin.UsID WHERE UserLogin.LoginName = ? AND UserLogin.LoginPassword = ?";

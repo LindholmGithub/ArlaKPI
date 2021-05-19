@@ -26,10 +26,20 @@ public class FileDAO {
 
     private final JDBCConnectionPool connectionPool;
 
+    /**
+     * constructor for instantiating the connection pool
+     * @throws IOException
+     */
     public FileDAO() throws IOException {
         connectionPool = JDBCConnectionPool.getInstance();
     }
 
+    /**
+     * extracts data from a .CSV file which it finds with the given parameters
+     * @param fileURL
+     * @return
+     * @throws Exception
+     */
     public XYChart.Series getCSVData(String fileURL) throws Exception {
         XYChart.Series series = new XYChart.Series();
         try (CSVReader csvReader = new CSVReader(new FileReader(fileURL))){
@@ -45,6 +55,12 @@ public class FileDAO {
         return series;
     }
 
+    /**
+     * extracts data from a .PDF file which it finds with the given parameters
+     * @param fileURL
+     * @return
+     * @throws IOException
+     */
     public String getPDFData(String fileURL) throws IOException {
         PDDocument pdf = PDDocument.load(new File(fileURL));
         String pdfSavePath = "src/Resources/Temp/" + fileURL.substring(fileURL.lastIndexOf("\\")+1,fileURL.lastIndexOf(".")) + ".jpg";
@@ -55,6 +71,12 @@ public class FileDAO {
         return pdfSavePath;
     }
 
+    /**
+     * extracts data from a .XLSX file which it finds with the given parameters
+     * @param fileURL
+     * @return
+     * @throws IOException
+     */
     public String[][] getXLSXData(String fileURL) throws IOException {
 
         ExcelFile excelFile = ExcelFile.load(fileURL);
@@ -73,6 +95,11 @@ public class FileDAO {
         return sourceData;
     }
 
+    /**
+     * compiles all files into a list for a given user.
+     * @param user
+     * @return
+     */
     public List<FileInfo> getAllViewsForUser(User user){
         ArrayList<FileInfo> allFiles = new ArrayList<>(){};
         int userID = user.getId();
