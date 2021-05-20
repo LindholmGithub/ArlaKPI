@@ -21,6 +21,7 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class AdminEditUserViewController implements Initializable {
@@ -64,7 +65,16 @@ public class AdminEditUserViewController implements Initializable {
     public void handleDeleteButton(ActionEvent actionEvent) {
         selectedFile = listOfViews.getSelectionModel().getSelectedItem();
         if (selectedFile != null) {
-            fileModel.deleteViewFromUser(selectedUser,selectedFile.getFilePath());
+            Alert confirm = new Alert(Alert.AlertType.CONFIRMATION);
+            confirm.setTitle("View deletion");
+            confirm.setContentText("Are you sure you want to delete the selected view?");
+            Optional<ButtonType> result = confirm.showAndWait();
+            ButtonType button = result.orElse(ButtonType.CANCEL);
+            if (button == ButtonType.OK) {
+                fileModel.deleteViewFromUser(selectedUser,selectedFile.getFilePath());
+            } else {
+                confirm.close();
+            }
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText("Please select something from the list.");

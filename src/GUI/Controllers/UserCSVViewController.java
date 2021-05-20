@@ -9,8 +9,12 @@ import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 
+import javax.swing.*;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 public class UserCSVViewController implements Initializable {
 
@@ -33,5 +37,4 @@ public class UserCSVViewController implements Initializable {
             exception.printStackTrace();
         }
     }
-
 }

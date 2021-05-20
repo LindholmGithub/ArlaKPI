@@ -8,10 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ListView;
-import javafx.scene.control.SelectionMode;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
@@ -82,6 +79,10 @@ public class UserSelectViewController implements Initializable {
                 xlsxStage.setScene(xlsxScene);
                 xlsxStage.show();
                 break;
+            default:
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Error, please select an item on the list");
+                alert.showAndWait();
         }
     }
 
