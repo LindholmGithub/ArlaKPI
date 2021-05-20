@@ -9,7 +9,6 @@ import javafx.collections.ObservableList;
 import javafx.scene.chart.XYChart;
 
 import java.io.IOException;
-import java.util.List;
 
 public class FileModel {
     private FileManager fileManager;

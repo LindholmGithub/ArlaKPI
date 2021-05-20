@@ -15,7 +15,6 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class UserSelectViewController implements Initializable {
@@ -43,46 +42,53 @@ public class UserSelectViewController implements Initializable {
         }
     }
 
-    public void handleLoadButton(ActionEvent actionEvent) throws Exception {
+    public void handleLoadButton(ActionEvent actionEvent) {
         selectedFileInfo = listOfViews.getSelectionModel().getSelectedItem();
         String fileType = selectedFileInfo.getFileType();
-        switch (fileType){
-            case "pdf":
-                URL pdfUrl = new File("src/GUI/Views/UserPDFView.fxml").toURI().toURL();
-                Parent pdfRoot = FXMLLoader.load(pdfUrl);
-                Scene pdfScene = new Scene(pdfRoot,800,600);
-                Stage pdfStage = new Stage();
-                pdfStage.setScene(pdfScene);
-                pdfStage.show();
-                break;
-            case "csv":
-                URL csvUrl = new File("src/GUI/Views/UserCSVView.fxml").toURI().toURL();
-                Parent csvRoot = FXMLLoader.load(csvUrl);
-                Scene csvScene = new Scene(csvRoot,800,600);
-                Stage csvStage = new Stage();
-                csvStage.setScene(csvScene);
-                csvStage.show();
-                break;
-            case "html":
-                URL htmlUrl = new File("src/GUI/Views/UserHTMLView.fxml").toURI().toURL();
-                Parent htmlRoot = FXMLLoader.load(htmlUrl);
-                Scene htmlScene = new Scene(htmlRoot,800,600);
-                Stage htmlStage = new Stage();
-                htmlStage.setScene(htmlScene);
-                htmlStage.show();
-                break;
-            case "xlsx":
-                URL xlsxUrl = new File("src/GUI/Views/UserXLSXView.fxml").toURI().toURL();
-                Parent xlsxRoot = FXMLLoader.load(xlsxUrl);
-                Scene xlsxScene = new Scene(xlsxRoot,800,600);
-                Stage xlsxStage = new Stage();
-                xlsxStage.setScene(xlsxScene);
-                xlsxStage.show();
-                break;
-            default:
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setContentText("Error, please select an item on the list");
-                alert.showAndWait();
+        try {
+            switch (fileType){
+                case "pdf":
+                    URL pdfUrl = new File("src/GUI/Views/UserPDFView.fxml").toURI().toURL();
+                    Parent pdfRoot = FXMLLoader.load(pdfUrl);
+                    Scene pdfScene = new Scene(pdfRoot,800,600);
+                    Stage pdfStage = new Stage();
+                    pdfStage.setScene(pdfScene);
+                    pdfStage.show();
+                    break;
+                case "csv":
+                    URL csvUrl = new File("src/GUI/Views/UserCSVView.fxml").toURI().toURL();
+                    Parent csvRoot = FXMLLoader.load(csvUrl);
+                    Scene csvScene = new Scene(csvRoot,800,600);
+                    Stage csvStage = new Stage();
+                    csvStage.setScene(csvScene);
+                    csvStage.show();
+                    break;
+                case "html":
+                    URL htmlUrl = new File("src/GUI/Views/UserHTMLView.fxml").toURI().toURL();
+                    Parent htmlRoot = FXMLLoader.load(htmlUrl);
+                    Scene htmlScene = new Scene(htmlRoot,800,600);
+                    Stage htmlStage = new Stage();
+                    htmlStage.setScene(htmlScene);
+                    htmlStage.show();
+                    break;
+                case "xlsx":
+                    URL xlsxUrl = new File("src/GUI/Views/UserXLSXView.fxml").toURI().toURL();
+                    Parent xlsxRoot = FXMLLoader.load(xlsxUrl);
+                    Scene xlsxScene = new Scene(xlsxRoot,800,600);
+                    Stage xlsxStage = new Stage();
+                    xlsxStage.setScene(xlsxScene);
+                    xlsxStage.show();
+                    break;
+                default:
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setContentText("Error, please select an item on the list");
+                    alert.showAndWait();
+            }
+        } catch (IOException e){
+            e.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("No file was found");
+            alert.showAndWait();
         }
     }
 
