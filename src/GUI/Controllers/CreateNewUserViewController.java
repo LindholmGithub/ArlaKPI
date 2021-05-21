@@ -38,12 +38,21 @@ public class CreateNewUserViewController implements Initializable {
     private Boolean isAdmin;
     private UserModel userModel;
 
+    /**
+     * This is the constructor for the CreateNewUserViewController.
+     * @throws IOException
+     */
     public CreateNewUserViewController() throws IOException {
         this.showPassword = new SimpleBooleanProperty();
         userModel = new UserModel();
         tooltip = new Tooltip();
     }
 
+    /**
+     * This method handles the create user button. It lets an admin create a new user.
+     * @param actionEvent
+     * @throws IOException
+     */
     public void handleCreateUserButton(ActionEvent actionEvent) throws IOException {
         typedFullName = fullNameField.getText();
         typedLoginName = loginNameField.getText();
@@ -63,11 +72,20 @@ public class CreateNewUserViewController implements Initializable {
 
     }
 
+    /**
+     * This method handles the cancel create user button. It lets the admin cancel their create user process.
+     * @param actionEvent
+     */
     public void handleCancelCreateUserButton(ActionEvent actionEvent) {
         Stage stage = (Stage) cancelCreateUserButton.getScene().getWindow();
         stage.close();
     }
 
+    /**
+     * This is the initialize method.
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         showPassword.addListener((ChangeListener<Boolean>)(observable, oldValue, newValue) -> {
@@ -88,6 +106,9 @@ public class CreateNewUserViewController implements Initializable {
         showPassword.bind(showHidePassword.selectedProperty());
     }
 
+    /**
+     * This method lets the user show a given password.
+     */
     private void showPassword() {
         Stage stage = (Stage) passwordField.getScene().getWindow();
         Point2D p = passwordField.localToScene(passwordField.getBoundsInLocal().getMaxX(), passwordField.getBoundsInLocal().getMaxY());
@@ -97,6 +118,9 @@ public class CreateNewUserViewController implements Initializable {
                 p.getY() + stage.getScene().getY() + stage.getY());
     }
 
+    /**
+     * This method lets the user hide a given password.
+     */
     private void hidePassword() {
         tooltip.setText("");
         tooltip.hide();

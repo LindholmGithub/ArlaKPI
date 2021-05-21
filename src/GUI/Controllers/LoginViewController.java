@@ -36,11 +36,21 @@ public class LoginViewController implements Initializable {
     private static User selectedUser;
     private LoginModel loginModel;
 
+    /**
+     * This is the LoginViewController constructor.
+     * @throws IOException
+     */
     public LoginViewController() throws IOException {
         loginModel = new LoginModel();
 
     }
 
+    /**
+     * This method handles the login button. It lets the user log in.
+     * @param actionEvent
+     * @throws SQLException
+     * @throws IOException
+     */
     public void handleLoginButton(ActionEvent actionEvent) throws SQLException, IOException {
         Stage thisStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         String writtenLogin = loginField.getText();
@@ -75,10 +85,19 @@ public class LoginViewController implements Initializable {
         }
     }
 
+    /**
+     * This method returns a user object.
+     * @return
+     */
     public static User getSelectedUser(){
         return selectedUser;
     }
 
+    /**
+     * This is the initialize method.
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Platform.runLater(new Runnable() {

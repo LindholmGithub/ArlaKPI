@@ -16,20 +16,40 @@ public class UserModel {
     private ObservableList<User> usersList = FXCollections.observableArrayList();
     private ObservableList<User> adminsList = FXCollections.observableArrayList();
 
-
+    /**
+     * This is the constructor for the UserModel.
+     * @throws IOException
+     */
     public UserModel() throws IOException {
         userManager = new UserManager();
     }
 
+    /**
+     * This retrieves the list of users-
+     * @return
+     */
     public ObservableList<User> getUsersList() {
         usersList.addAll(userManager.getUsersList());
         return usersList;
     }
 
+    /**
+     * This retrieves the list of admins.
+     * @return
+     */
     public ObservableList<User> getAdminsList() {
         adminsList.addAll(userManager.getAdminsList());
         return adminsList;
     }
+
+    /**
+     * This method adds a user/admin to their respective lists.
+     * @param fullName
+     * @param loginName
+     * @param password
+     * @param isAdmin
+     * @throws IOException
+     */
     public void addUser(String fullName,String loginName,String password,boolean isAdmin) throws IOException {
         userManager.addUser(fullName, loginName, password, isAdmin);
         userManager.emptyLists();
@@ -39,6 +59,14 @@ public class UserModel {
         AdminMainViewController.usersObservableList.addAll(userManager.getUsersList());
     }
 
+    /**
+     * This method makes it possible to edit a user.
+     * @param selectedUser
+     * @param fullName
+     * @param loginName
+     * @param password
+     * @throws IOException
+     */
     public void editUser(User selectedUser,String fullName, String loginName, String password) throws IOException {
         userManager.editUser(selectedUser,fullName,loginName,password);
         userManager.emptyLists();
@@ -48,6 +76,12 @@ public class UserModel {
         AdminMainViewController.usersObservableList.addAll(userManager.getUsersList());
     }
 
+    /**
+     * This method makes it possible to delete a user.
+     * @param selectedUser
+     * @throws SQLException
+     * @throws IOException
+     */
     public void deleteUser(User selectedUser) throws SQLException, IOException {
         userManager.deleteUser(selectedUser);
         userManager.emptyLists();

@@ -20,6 +20,11 @@ public class UserCSVViewController implements Initializable {
     private XYChart.Series series1;
     private final int sleepTime = 300000;
 
+    /**
+     * This is the initialize method.
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {

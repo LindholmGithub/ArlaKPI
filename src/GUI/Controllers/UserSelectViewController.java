@@ -30,6 +30,11 @@ public class UserSelectViewController implements Initializable {
     private FileModel fileModel;
     private static FileInfo selectedFileInfo;
 
+    /**
+     * This is the initialize method.
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
@@ -42,6 +47,10 @@ public class UserSelectViewController implements Initializable {
         }
     }
 
+    /**
+     * This method handles the load button. It lets the user load the selected views, by opening up the selected files.
+     * @param actionEvent
+     */
     public void handleLoadButton(ActionEvent actionEvent) {
         selectedFileInfo = listOfViews.getSelectionModel().getSelectedItem();
         String fileType = selectedFileInfo.getFileType();
@@ -92,10 +101,19 @@ public class UserSelectViewController implements Initializable {
         }
     }
 
+    /**
+     * This method returns a selectedFileInfo object.
+     * @return
+     */
     public static FileInfo getSelectedFileInfo(){
         return selectedFileInfo;
     }
 
+    /**
+     * This method handles the logout button. It lets the user log out.
+     * @param actionEvent
+     * @throws IOException
+     */
     public void handleLogoutButton(ActionEvent actionEvent) throws IOException {
         Stage thisStage = (Stage) logoutButton.getScene().getWindow();
         URL userUrl = new File("src/GUI/Views/LoginView.fxml").toURI().toURL();

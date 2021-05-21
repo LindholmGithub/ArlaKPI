@@ -39,12 +39,21 @@ public class  EditUserInfoViewController implements Initializable {
     private User selectedUser;
     private UserModel userModel;
 
+    /**
+     * This is the EditUserInfoViewController constructor.
+     * @throws IOException
+     */
     public EditUserInfoViewController() throws IOException {
         this.showPassword = new SimpleBooleanProperty();
         userModel = new UserModel();
         tooltip = new Tooltip();
     }
 
+    /**
+     * This method handles the edit user button. It lets the admin edit the user info.
+     * @param actionEvent
+     * @throws IOException
+     */
     public void handleEditUserButton(ActionEvent actionEvent) throws IOException {
         typedFullName = fullNameField.getText();
         typedLoginName = loginNameField.getText();
@@ -60,11 +69,20 @@ public class  EditUserInfoViewController implements Initializable {
 
     }
 
+    /**
+     * This method lets and admin cancel the edit user process.
+     * @param actionEvent
+     */
     public void handleCancelEditUserButton(ActionEvent actionEvent) {
         Stage stage = (Stage) cancelEditUserButton.getScene().getWindow();
         stage.close();
     }
 
+    /**
+     * This is the initialize method.
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         selectedUser = AdminMainViewController.getSelectedUser();
@@ -87,6 +105,9 @@ public class  EditUserInfoViewController implements Initializable {
         showPassword.bind(showHidePassword.selectedProperty());
     }
 
+    /**
+     * This method lets the user show a given password.
+     */
     private void showPassword() {
         Stage stage = (Stage) passwordField.getScene().getWindow();
         Point2D p = passwordField.localToScene(passwordField.getBoundsInLocal().getMaxX(), passwordField.getBoundsInLocal().getMaxY());
@@ -96,6 +117,9 @@ public class  EditUserInfoViewController implements Initializable {
                 p.getY() + stage.getScene().getY() + stage.getY());
     }
 
+    /**
+     * This method lets the user hide a given password.
+     */
     private void hidePassword() {
         tooltip.setText("");
         tooltip.hide();

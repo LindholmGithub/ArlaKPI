@@ -19,6 +19,11 @@ public class UserHTMLViewController implements Initializable {
     private FileInfo selectedFile;
     private String filePath;
 
+    /**
+     * This is the initialize method.
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         selectedFile = UserSelectViewController.getSelectedFileInfo();

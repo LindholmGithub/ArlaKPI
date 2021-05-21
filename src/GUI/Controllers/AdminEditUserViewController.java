@@ -38,6 +38,11 @@ public class AdminEditUserViewController implements Initializable {
     private FileInfo selectedFile;
     private String selectedFileName;
 
+    /**
+     * This is the initialize method.
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
@@ -57,11 +62,19 @@ public class AdminEditUserViewController implements Initializable {
         });
     }
 
+    /**
+     * This method handles the log out button. It let's the user log out of the current account.
+     * @param actionEvent
+     */
     public void handleLogoutButton(ActionEvent actionEvent) {
         Stage stage = (Stage) logoutButton.getScene().getWindow();
         stage.close();
     }
 
+    /**
+     * This method handles the delete button. It lets the user delete a selected View from their list.
+     * @param actionEvent
+     */
     public void handleDeleteButton(ActionEvent actionEvent) {
         selectedFile = listOfViews.getSelectionModel().getSelectedItem();
         if (selectedFile != null) {
@@ -82,6 +95,11 @@ public class AdminEditUserViewController implements Initializable {
         }
     }
 
+    /**
+     * This method handles the create button. This lets the user create a new view.
+     * @param actionEvent
+     * @throws IOException
+     */
     public void handleCreateButton(ActionEvent actionEvent) throws IOException {
         URL userUrl = new File("src/GUI/Views/AdminCreateView.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(userUrl);
@@ -95,6 +113,10 @@ public class AdminEditUserViewController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
+
+    /**
+     * This method clears the list of views.
+     */
     public static void clearStaticList(){
         observableListOfViews.clear();
     }

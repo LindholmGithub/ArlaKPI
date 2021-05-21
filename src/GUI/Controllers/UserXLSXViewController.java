@@ -28,6 +28,11 @@ public class UserXLSXViewController implements Initializable {
     private String filePath;
     private final int sleepTime = 300000;
 
+    /**
+     * This is the initialize method.
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         SpreadsheetInfo.setLicense("FREE-LIMITED-KEY");
@@ -71,6 +76,11 @@ public class UserXLSXViewController implements Initializable {
         thread.setDaemon(true);
         thread.start();
     }
+
+    /**
+     * This method fills a two dimensional String array.
+     * @param dataSource
+     */
     public void fillTable(String[][] dataSource) {
         excelTable.getColumns().clear();
         ObservableList<ObservableList<String>> data = FXCollections.observableArrayList();

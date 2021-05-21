@@ -45,6 +45,10 @@ public class AdminMainViewController implements Initializable {
     public static ObservableList<User> adminsObservableList;
     private UserModel userModel;
 
+    /**
+     * This is the constructor for the AdminMainViewController.
+     * @throws IOException
+     */
     public AdminMainViewController() throws IOException {
         try {
             userModel = new UserModel();
@@ -57,6 +61,11 @@ public class AdminMainViewController implements Initializable {
         }
     }
 
+    /**
+     * This method handles the create button in the admin view.
+     * @param actionEvent
+     * @throws IOException
+     */
     public void handleCreateButton(ActionEvent actionEvent) throws IOException {
         try {
             URL urlMoreInfo = new File("src/GUI/Views/CreateNewUserView.fxml").toURI().toURL();
@@ -74,6 +83,11 @@ public class AdminMainViewController implements Initializable {
         }
     }
 
+    /**
+     * This method handles the delete button. It lets an admin delete a user.
+     * @param actionEvent
+     * @throws SQLException
+     */
     public void handleDeleteButton(ActionEvent actionEvent) throws SQLException {
         selectedUser = usersList.getSelectionModel().getSelectedItem();
         selectedAdmin = adminsList.getSelectionModel().getSelectedItem();
@@ -105,6 +119,10 @@ public class AdminMainViewController implements Initializable {
         }
     }
 
+    /**
+     * This method handles the edit info button. It lets an Admin edit user info (login.. etc.)
+     * @param actionEvent
+     */
     public void handleEditInfoButton(ActionEvent actionEvent) {
         selectedUser = usersList.getSelectionModel().getSelectedItem();
         selectedAdmin = adminsList.getSelectionModel().getSelectedItem();
@@ -129,6 +147,10 @@ public class AdminMainViewController implements Initializable {
         }
     }
 
+    /**
+     * This method handles the edit view button. It lets an admin set the views for a specific user.
+     * @param actionEvent
+     */
     public void handleEditViewButton(ActionEvent actionEvent) {
         selectedUser = usersList.getSelectionModel().getSelectedItem();
         selectedAdmin = adminsList.getSelectionModel().getSelectedItem();
@@ -156,6 +178,11 @@ public class AdminMainViewController implements Initializable {
         }
     }
 
+    /**
+     * This is the initialize method.
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         adminsList.setItems(userModel.getAdminsList());
@@ -174,19 +201,34 @@ public class AdminMainViewController implements Initializable {
         });
     }
 
+    /**
+     * This method blocks the user from making multiple selections from different lists.
+     * @param mouseEvent
+     */
     public void handleAdminFocus(MouseEvent mouseEvent) {
         usersList.getSelectionModel().clearSelection();
     }
 
+    /**
+     * This method has the same job as the above. It just works the other way around. Blocking selection from both admin and user list simultaneously.
+     * @param mouseEvent
+     */
     public void handleUserFocus(MouseEvent mouseEvent) {
         adminsList.getSelectionModel().clearSelection();
     }
 
+    /**
+     * This clears the static lists.
+     */
     public static void emptyStaticLists() {
         usersObservableList.clear();
         adminsObservableList.clear();
     }
 
+    /**
+     * This method returns a user or admin object.
+     * @return
+     */
     public static User getSelectedUser() {
         if (selectedUser != null){
             return selectedUser;
@@ -196,6 +238,11 @@ public class AdminMainViewController implements Initializable {
         return null;
     }
 
+    /**
+     * This method handles the admin logout button. It lets admins log out.
+     * @param actionEvent
+     * @throws IOException
+     */
     public void handleAdminLogoutButton(ActionEvent actionEvent) throws IOException {
         Stage thisStage = (Stage) adminLogoutButton.getScene().getWindow();
         URL userUrl = new File("src/GUI/Views/LoginView.fxml").toURI().toURL();

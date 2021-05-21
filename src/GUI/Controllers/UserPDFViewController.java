@@ -18,6 +18,11 @@ public class UserPDFViewController implements Initializable {
     private String fileName;
     private FileInfo selectedFileInfo;
 
+    /**
+     * This is the initialize method.
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
