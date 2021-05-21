@@ -15,7 +15,7 @@ public class FileManager {
     private String fileType;
 
     /**
-     * constructor for the FileManager class to instantiate our Data Access Objects
+     * Constructor for the FileManager class to instantiate our Data Access Objects
      * @throws IOException
      */
     public FileManager() throws IOException {
@@ -24,7 +24,7 @@ public class FileManager {
     }
 
     /**
-     * gets the CSV data from the FileDAO
+     * Gets the CSV data from the FileDAO
      * @param fileURL
      * @return
      * @throws Exception
@@ -34,7 +34,7 @@ public class FileManager {
     }
 
     /**
-     * gets the PDF data from the FileDAO
+     * Gets the PDF data from the FileDAO
      * @param fileURL
      * @return
      * @throws IOException
@@ -44,7 +44,7 @@ public class FileManager {
     }
 
     /**
-     * gets the excel data from the FileDAO
+     * Gets the excel data from the FileDAO
      * @param fileURL
      * @return
      * @throws IOException
@@ -54,7 +54,7 @@ public class FileManager {
     }
 
     /**
-     * adds a view to a given non admin user from a filename, file format and file URL
+     * Adds a view to a given non admin user from a filename, file format and file URL
      * @param user
      * @param nameOfFile
      * @param formatType
@@ -65,7 +65,7 @@ public class FileManager {
     }
 
     /**
-     * deletes a view from a given user and its url to identify the correct file to delete
+     * Deletes a view from a given user and its url to identify the correct file to delete
      * @param user
      * @param fileURL
      */
@@ -74,7 +74,7 @@ public class FileManager {
     }
 
     /**
-     * gets all users and puts them in a list
+     * Gets all users and puts them in a list
      * @param user
      * @return
      */

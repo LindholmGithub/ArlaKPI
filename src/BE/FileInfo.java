@@ -6,7 +6,7 @@ public class FileInfo {
     private String filePath;
 
     /**
-     * constructor for the FileInfo BE Class
+     * Constructor for the FileInfo BE Class
      * @param fileName
      * @param fileType
      * @param filePath
@@ -26,7 +26,7 @@ public class FileInfo {
     }
 
     /**
-     * setter for the fileName
+     * Setter for the fileName
      * @param fileName
      */
     public void setFileName(String fileName) {
@@ -34,7 +34,7 @@ public class FileInfo {
     }
 
     /**
-     * getter for the fileType
+     * Getter for the fileType
      * @return
      */
     public String getFileType() {
@@ -42,7 +42,7 @@ public class FileInfo {
     }
 
     /**
-     * setter for the fileType
+     * Setter for the fileType
      * @param fileType
      */
     public void setFileType(String fileType) {
@@ -50,7 +50,7 @@ public class FileInfo {
     }
 
     /**
-     * getter for the filepath
+     * Getter for the filepath
      * @return
      */
     public String getFilePath() {
@@ -58,7 +58,7 @@ public class FileInfo {
     }
 
     /**
-     * setter for the filepath
+     * Setter for the filepath
      * @param filePath
      */
     public void setFilePath(String filePath) {

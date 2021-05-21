@@ -14,7 +14,7 @@ public class AdminDAO {
     private final JDBCConnectionPool connectionPool;
 
     /**
-     * constructor to instanciate our connectionpool
+     * Constructor to instanciate our connectionpool
      * @throws IOException
      */
     public AdminDAO() throws IOException {
@@ -46,7 +46,7 @@ public class AdminDAO {
     }
 
     /**
-     * deletes a specific view from a given user, using the ID of the user & the URL to the file to which the file is attached to by deleting
+     * Deletes a specific view from a given user, using the ID of the user & the URL to the file to which the file is attached to by deleting
      * the entry in the database which corresponds with the given paramaters
      * @param user
      * @param fileURL
@@ -64,30 +64,3 @@ public class AdminDAO {
         }
     }
 }
-
-/*
-
-                             ;\
-                            |' \
-         _                  ; : ;
-        / `-.              /: : |
-       |  ,-.`-.          ,': : |
-       \  :  `. `.       ,'-. : |
-        \ ;    ;  `-.__,'    `-.|
-         \ ;   ;  :::  ,::'`:.  `.
-          \ `-. :  `    :.    `.  \
-           \   \    ,   ;   ,:    (\
-            \   :., :.    ,'o)): ` `-.
-           ,/,' ;' ,::"'`.`---'   `.  `-._
-         ,/  :  ; '"      `;'          ,--`.
-        ;/   :; ;             ,:'     (   ,:)
-          ,.,:.    ; ,:.,  ,-._ `.     \""'/
-          '::'     `:'`  ,'(  \`._____.-'"'
-             ;,   ;  `.  `. `._`-.  \\
-             ;:.  ;:       `-._`-.\  \`. 
-              '`:. :        |' `. `\  ) \
-      -hrr-      ` ;:       |    `--\__,'
-                   '`      ,'
-                        ,-'
-
- */

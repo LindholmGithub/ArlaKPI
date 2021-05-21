@@ -55,6 +55,7 @@ public class FileModel {
 
     /**
      * This method adds a view to a selected user.
+     * Then empties and fills the static lists again to trigger the listener, to refresh the lists in the GUI.
      * @param user
      * @param nameOfFile
      * @param formatType
@@ -70,6 +71,7 @@ public class FileModel {
 
     /**
      * This method deletes a view from a selected user.
+     * Then empties and fills the static lists again to trigger the listener, to refresh the lists in the GUI.
      * @param user
      * @param fileURL
      */

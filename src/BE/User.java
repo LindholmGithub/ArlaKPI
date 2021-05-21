@@ -1,8 +1,5 @@
 package BE;
 
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
-
 public class User {
 
     private final int id;

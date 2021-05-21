@@ -4,12 +4,9 @@ import BE.User;
 import BLL.UserManager;
 import GUI.Controllers.AdminMainViewController;
 import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
-
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.List;
 
 public class UserModel {
     private UserManager userManager;
@@ -25,7 +22,7 @@ public class UserModel {
     }
 
     /**
-     * This retrieves the list of users-
+     * This retrieves the list of users.
      * @return
      */
     public ObservableList<User> getUsersList() {
@@ -44,6 +41,8 @@ public class UserModel {
 
     /**
      * This method adds a user/admin to their respective lists.
+     * Then empties and fills the static lists again to trigger the listener, to refresh the lists in the GUI.
+     *
      * @param fullName
      * @param loginName
      * @param password
@@ -61,6 +60,7 @@ public class UserModel {
 
     /**
      * This method makes it possible to edit a user.
+     * Then empties and fills the static lists again to trigger the listener, to refresh the lists in the GUI.
      * @param selectedUser
      * @param fullName
      * @param loginName
@@ -78,6 +78,7 @@ public class UserModel {
 
     /**
      * This method makes it possible to delete a user.
+     * Then empties and fills the static lists again to trigger the listener, to refresh the lists in the GUI.
      * @param selectedUser
      * @throws SQLException
      * @throws IOException

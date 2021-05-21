@@ -14,7 +14,7 @@ public class UserDAO {
     private final JDBCConnectionPool connectionPool;
 
     /**
-     * constructor for instantiating the connection pool
+     * Constructor for instantiating the connection pool
      * @throws IOException
      */
     public UserDAO() throws IOException {
@@ -22,7 +22,7 @@ public class UserDAO {
     }
 
     /**
-     * compiles all users into a list
+     * Compiles all users into a list
      * @return
      */
     public List<User> getAllUsers(){
@@ -48,7 +48,7 @@ public class UserDAO {
     }
 
     /**
-     * adds a user to the database
+     * Adds a user to the database
      * @param fullName
      * @param loginName
      * @param password
@@ -78,7 +78,7 @@ public class UserDAO {
     }
 
     /**
-     * adds a login to the user
+     * Adds a login to the user
      * @param id
      * @param loginName
      * @param password
@@ -99,7 +99,7 @@ public class UserDAO {
     }
 
     /**
-     * deletes the user
+     * Deletes the user
      * @param selectedUser
      * @throws SQLException
      */
@@ -117,7 +117,7 @@ public class UserDAO {
     }
 
     /**
-     * deletes the users login
+     * Deletes the users login
      * @param selectedUser
      */
     public void deleteUserLogin(User selectedUser){
@@ -133,7 +133,7 @@ public class UserDAO {
     }
 
     /**
-     * edits user
+     * Edits user
      * @param user
      * @param fullName
      * @param loginName
@@ -154,7 +154,7 @@ public class UserDAO {
     }
 
     /**
-     * edits user login
+     * Edits user login
      * @param id
      * @param loginName
      * @param password

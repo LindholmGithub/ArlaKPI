@@ -10,7 +10,7 @@ public class LoginManager {
     private LoginDAO loginDAO;
 
     /**
-     * constructor for the LoginManager
+     * Constructor for the LoginManager
      * @throws IOException
      */
     public LoginManager() throws IOException {
@@ -18,7 +18,7 @@ public class LoginManager {
     }
 
     /**
-     * gets a user from given login information
+     * Gets a user from given login information
      * @param login
      * @param password
      * @return

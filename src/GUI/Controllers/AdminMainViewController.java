@@ -226,7 +226,7 @@ public class AdminMainViewController implements Initializable {
     }
 
     /**
-     * This method returns a user or admin object.
+     * This method returns the selected user or admin object, from the list it is selected from, this is to use it in other controllers.
      * @return
      */
     public static User getSelectedUser() {
@@ -239,7 +239,7 @@ public class AdminMainViewController implements Initializable {
     }
 
     /**
-     * This method handles the admin logout button. It lets admins log out.
+     * This method handles the admin logout button. It lets admins log out to the Login View..
      * @param actionEvent
      * @throws IOException
      */

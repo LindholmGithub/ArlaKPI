@@ -29,7 +29,7 @@ public class FileDAO {
     private final JDBCConnectionPool connectionPool;
 
     /**
-     * constructor for instantiating the connection pool
+     * Constructor for instantiating the connection pool
      * @throws IOException
      */
     public FileDAO() throws IOException {
@@ -37,7 +37,7 @@ public class FileDAO {
     }
 
     /**
-     * extracts data from a .CSV file which it finds with the given parameters
+     * Extracts data from a .CSV file which it finds with the given parameters
      * @param fileURL
      * @return
      * @throws Exception
@@ -58,7 +58,7 @@ public class FileDAO {
     }
 
     /**
-     * extracts data from a .PDF file which it finds with the given parameters
+     * Extracts data from a .PDF file which it finds with the given parameters
      * @param fileURL
      * @return
      * @throws IOException
@@ -74,7 +74,7 @@ public class FileDAO {
     }
 
     /**
-     * extracts data from a .XLSX file which it finds with the given parameters
+     * Extracts data from a .XLSX file which it finds with the given parameters
      * @param fileURL
      * @return
      * @throws IOException
@@ -98,7 +98,7 @@ public class FileDAO {
     }
 
     /**
-     * compiles all files into a list for a given user.
+     * Compiles all files into a list for a given user.
      * @param user
      * @return
      */

@@ -48,7 +48,8 @@ public class UserSelectViewController implements Initializable {
     }
 
     /**
-     * This method handles the load button. It lets the user load the selected views, by opening up the selected files.
+     * This method handles the load button. It lets the user load the selected views.
+     * It loads different views based on the file extensions through switch cases.
      * @param actionEvent
      */
     public void handleLoadButton(ActionEvent actionEvent) {
@@ -102,15 +103,15 @@ public class UserSelectViewController implements Initializable {
     }
 
     /**
-     * This method returns a selectedFileInfo object.
-     * @return
+     * Returns the selected FileInfo object from a list when called.
+     * @return selectedFileInfo
      */
     public static FileInfo getSelectedFileInfo(){
         return selectedFileInfo;
     }
 
     /**
-     * This method handles the logout button. It lets the user log out.
+     * This method handles the logout button. It lets the user log out to the Login View.
      * @param actionEvent
      * @throws IOException
      */
