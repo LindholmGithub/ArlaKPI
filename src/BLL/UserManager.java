@@ -14,9 +14,8 @@ public class UserManager {
     private List<User> adminsList;
     private UserDAO userDAO;
 
-
     /**
-     * constructor for the UserManager
+     * Constructor for the UserManager
      * @throws IOException
      */
     public UserManager() throws IOException {
@@ -25,14 +24,14 @@ public class UserManager {
     }
 
     /**
-     * method uses the iterator pattern which looks through our list with all users and sorts them into two new lists
+     * Method uses the iterator pattern which looks through our list with all users and sorts them into two new lists
      * depending on weather they are admin or not.
      * @throws IOException
      */
     public void fillLists() throws IOException {
+        allUsers = userDAO.getAllUsers();
         usersList = new ArrayList<>();
         adminsList = new ArrayList<>();
-        allUsers = userDAO.getAllUsers();
         for (User u: allUsers) {
             if(u.isAdmin()){
                 adminsList.add(u);
@@ -44,7 +43,7 @@ public class UserManager {
     }
 
     /**
-     * adds a user to the database from given information
+     * Adds a user to the database from given information
      * @param fullName
      * @param loginName
      * @param password
@@ -55,7 +54,7 @@ public class UserManager {
     }
 
     /**
-     * gets list of non admin users
+     * Gets list of non admin users
      * @return
      */
     public List<User> getUsersList() {
@@ -63,7 +62,7 @@ public class UserManager {
     }
 
     /**
-     * gets a list of admin users
+     * Gets a list of admin users
      * @return
      */
     public List<User> getAdminsList() {
@@ -71,7 +70,7 @@ public class UserManager {
     }
 
     /**
-     * deletes a selected user
+     * Deletes a selected user
      * @param selectedUser
      * @throws SQLException
      */
@@ -80,7 +79,7 @@ public class UserManager {
     }
 
     /**
-     * empties all of our lists
+     * Empties all of our lists
      */
     public void emptyLists() {
         allUsers.clear();
@@ -89,7 +88,7 @@ public class UserManager {
     }
 
     /**
-     * edits a user in the database overriding the information with the given parameters
+     * Edits a user in the database overriding the information with the given parameters
      * @param selectedUser
      * @param fullName
      * @param loginName
