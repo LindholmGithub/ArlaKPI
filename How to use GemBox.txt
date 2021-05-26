@@ -1,0 +1,3 @@
+We could not make the GemBox library follow the repository properly, so here is a rar file that contains the free version of "gembox-spreadsheet.jar".
+
+The .rar file needs to be extracted, and the .jar file needs to be added manually in the project structure, whenever you want to run the program for the first time.
